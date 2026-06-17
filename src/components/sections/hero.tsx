@@ -41,11 +41,11 @@ export function Hero() {
   return (
     <section className="pt-32 pb-20 md:pt-48 md:pb-32 relative overflow-hidden flex flex-col justify-center min-h-[90vh]">
       
-      {/* Animated Glowing Orbs Background */}
+      {/* Static Glowing Orbs Background (Optimized for Performance) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px] animate-[pulse_8s_ease-in-out_infinite] mix-blend-multiply dark:mix-blend-screen" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/20 blur-[120px] animate-[pulse_10s_ease-in-out_infinite_reverse] mix-blend-multiply dark:mix-blend-screen" />
-        <div className="absolute top-[40%] left-[60%] w-[30%] h-[30%] rounded-full bg-purple-500/20 blur-[100px] animate-[pulse_12s_ease-in-out_infinite] mix-blend-multiply dark:mix-blend-screen" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[100px] opacity-70" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/20 blur-[100px] opacity-70" />
+        <div className="absolute top-[40%] left-[60%] w-[30%] h-[30%] rounded-full bg-purple-500/20 blur-[80px] opacity-70" />
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] dark:opacity-10" />
       </div>
 

@@ -29,7 +29,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 border-b",
+        "fixed top-0 w-full z-50 transition-colors duration-300 border-b",
         isMobileMenuOpen
           ? "bg-background border-transparent"
           : scrolled 

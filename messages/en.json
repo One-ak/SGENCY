@@ -1,0 +1,67 @@
+{
+  "Navbar": {
+    "services": "Services",
+    "packages": "Packages",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "bookCall": "Book Consultation"
+  },
+  "Metadata": {
+    "title": "SGENCY | Premium Web Design & AI Automation Agency",
+    "description": "SGENCY is a global premium digital agency specializing in custom software development, AI automation services, and high-conversion web design.",
+    "keywords": "web design agency, custom software development, AI automation services, premium digital agency, SEO optimization, high conversion websites"
+  },
+  "Hero": {
+    "badge": "Premium Global Digital Agency",
+    "build": "Build. Automate. ",
+    "scale": "Scale.",
+    "subtitle": "We are a top-tier web design and custom software development agency. We bridge the gap between premium design, robust software engineering, and AI automation to accelerate your business growth.",
+    "bookCall": "Book a Strategy Call",
+    "viewWork": "View Our Portfolio"
+  },
+  "Services": {
+    "badge": "Our Premium Services",
+    "title": "Comprehensive Digital Solutions for Enterprise Growth",
+    "subtitle": "From custom software development to intelligent AI automation, our expert team delivers end-to-end digital transformation tailored to your unique business needs.",
+    "items": {
+      "software": {
+        "title": "Custom Software Development",
+        "description": "We architect and build scalable, secure, and high-performance web applications, SaaS platforms, and enterprise software using modern tech stacks like Next.js, React, and Node.js."
+      },
+      "design": {
+        "title": "Premium Web Design & UI/UX",
+        "description": "Award-winning, conversion-focused web design. We create stunning, skeuomorphic, and modern interfaces that captivate users and elevate your brand identity above the competition."
+      },
+      "marketing": {
+        "title": "Data-Driven Growth Marketing & SEO",
+        "description": "Dominate search rankings with our advanced technical SEO, content strategy, and high-ROI digital marketing campaigns designed to capture and convert high-value leads."
+      },
+      "ai": {
+        "title": "AI Automation Services & Machine Learning",
+        "description": "Streamline operations with cutting-edge Artificial Intelligence. We integrate custom LLMs, automated customer support agents, and predictive analytics directly into your workflow."
+      }
+    }
+  },
+  "Portfolio": {
+    "badge": "Featured Case Studies",
+    "title": "Our Award-Winning Digital Portfolio",
+    "subtitle": "Explore how we have transformed businesses globally with our custom software development and premium web design services."
+  },
+  "Packages": {
+    "badge": "Transparent Pricing",
+    "title": "Investment Plans for Digital Transformation",
+    "subtitle": "Choose a tailored package that aligns with your growth trajectory. From MVP launches to full-scale enterprise AI automation.",
+    "monthly": "Monthly",
+    "quarterly": "Quarterly"
+  },
+  "Testimonials": {
+    "badge": "Client Success Stories",
+    "title": "Trusted by Industry Leaders Worldwide",
+    "subtitle": "Hear from the CEOs, founders, and executives who partnered with us to scale their digital presence and automate their operations."
+  },
+  "FinalCta": {
+    "title": "Ready to Transform Your Digital Presence?",
+    "subtitle": "Partner with a premium web design and AI automation agency that delivers measurable results. Let's build your next industry-leading platform.",
+    "button": "Start Your Project Today"
+  }
+}

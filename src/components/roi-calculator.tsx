@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { motion } from "framer-motion"
-import { Calculator, TrendingUp, IndianRupee, Clock } from "lucide-react"
+import { Calculator, TrendingUp, IndianRupee, Clock, Users } from "lucide-react"
 
 export function RoiCalculator() {
   const [employees, setEmployees] = React.useState(5)
@@ -39,13 +39,26 @@ export function RoiCalculator() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Left Side: Inputs */}
-        <div className="space-y-8">
-          <div className="space-y-4">
-            <div className="flex justify-between items-end">
-              <label className="text-sm font-semibold flex items-center gap-2">
-                Team Size <span className="text-muted-foreground font-normal">(Employees doing manual data entry/support)</span>
-              </label>
-              <span className="text-lg font-heading font-bold text-primary">{employees}</span>
+        <div className="space-y-6">
+          {/* Team Size Input */}
+          <div className="bg-muted/30 p-5 rounded-2xl border border-border/50 space-y-4">
+            <div className="flex justify-between items-start">
+              <div>
+                <label className="text-base font-semibold text-foreground flex items-center gap-2">
+                  <Users className="w-4 h-4 text-primary" /> Team Size
+                </label>
+                <p className="text-xs text-muted-foreground mt-1">Employees doing manual tasks</p>
+              </div>
+              <div className="flex items-center bg-background border border-border rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-primary/30 shadow-sm">
+                <input 
+                  type="number" 
+                  min="1" 
+                  max="50" 
+                  value={employees} 
+                  onChange={(e) => setEmployees(parseInt(e.target.value) || 0)}
+                  className="w-20 px-2 py-2 text-center text-lg font-bold text-primary bg-transparent outline-none"
+                />
+              </div>
             </div>
             <input 
               type="range" 
@@ -55,31 +68,68 @@ export function RoiCalculator() {
               onChange={(e) => setEmployees(parseInt(e.target.value))}
               className="w-full accent-primary h-2 bg-muted rounded-lg appearance-none cursor-pointer"
             />
+            <div className="flex justify-between text-xs font-medium text-muted-foreground">
+              <span>1</span>
+              <span>50</span>
+            </div>
           </div>
 
-          <div className="space-y-4">
-            <div className="flex justify-between items-end">
-              <label className="text-sm font-semibold flex items-center gap-2">
-                <Clock className="w-4 h-4 text-muted-foreground" /> Hours Spent Per Week <span className="text-muted-foreground font-normal">(per employee)</span>
-              </label>
-              <span className="text-lg font-heading font-bold text-primary">{hoursPerWeek} hrs</span>
+          {/* Hours Input */}
+          <div className="bg-muted/30 p-5 rounded-2xl border border-border/50 space-y-4">
+            <div className="flex justify-between items-start">
+              <div>
+                <label className="text-base font-semibold text-foreground flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-primary" /> Hours / Week
+                </label>
+                <p className="text-xs text-muted-foreground mt-1">Time spent per employee</p>
+              </div>
+              <div className="flex items-center bg-background border border-border rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-primary/30 shadow-sm px-2">
+                <input 
+                  type="number" 
+                  min="1" 
+                  max="40" 
+                  value={hoursPerWeek} 
+                  onChange={(e) => setHoursPerWeek(parseInt(e.target.value) || 0)}
+                  className="w-16 py-2 text-right text-lg font-bold text-primary bg-transparent outline-none"
+                />
+                <span className="text-muted-foreground text-sm font-medium ml-1">hrs</span>
+              </div>
             </div>
             <input 
               type="range" 
-              min="5" 
+              min="1" 
               max="40" 
               value={hoursPerWeek} 
               onChange={(e) => setHoursPerWeek(parseInt(e.target.value))}
               className="w-full accent-primary h-2 bg-muted rounded-lg appearance-none cursor-pointer"
             />
+            <div className="flex justify-between text-xs font-medium text-muted-foreground">
+              <span>1 hr</span>
+              <span>40 hrs</span>
+            </div>
           </div>
 
-          <div className="space-y-4">
-            <div className="flex justify-between items-end">
-              <label className="text-sm font-semibold flex items-center gap-2">
-                <IndianRupee className="w-4 h-4 text-muted-foreground" /> Average Hourly Rate <span className="text-muted-foreground font-normal">(₹)</span>
-              </label>
-              <span className="text-lg font-heading font-bold text-primary">{formatINR(hourlyRate)}</span>
+          {/* Hourly Rate Input */}
+          <div className="bg-muted/30 p-5 rounded-2xl border border-border/50 space-y-4">
+            <div className="flex justify-between items-start">
+              <div>
+                <label className="text-base font-semibold text-foreground flex items-center gap-2">
+                  <IndianRupee className="w-4 h-4 text-primary" /> Hourly Rate
+                </label>
+                <p className="text-xs text-muted-foreground mt-1">Average pay per hour</p>
+              </div>
+              <div className="flex items-center bg-background border border-border rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-primary/30 shadow-sm px-2">
+                <span className="text-muted-foreground text-sm font-medium mr-1">₹</span>
+                <input 
+                  type="number" 
+                  min="100" 
+                  max="2000" 
+                  step="50"
+                  value={hourlyRate} 
+                  onChange={(e) => setHourlyRate(parseInt(e.target.value) || 0)}
+                  className="w-20 py-2 text-left text-lg font-bold text-primary bg-transparent outline-none"
+                />
+              </div>
             </div>
             <input 
               type="range" 
@@ -90,6 +140,10 @@ export function RoiCalculator() {
               onChange={(e) => setHourlyRate(parseInt(e.target.value))}
               className="w-full accent-primary h-2 bg-muted rounded-lg appearance-none cursor-pointer"
             />
+            <div className="flex justify-between text-xs font-medium text-muted-foreground">
+              <span>₹100</span>
+              <span>₹2,000</span>
+            </div>
           </div>
         </div>
 

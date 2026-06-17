@@ -17,17 +17,17 @@ export function FinalCta() {
           <div className="absolute inset-0 bg-noise-texture opacity-20 pointer-events-none" />
           
           <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
-            <Heading level={2} size="4xl" className="mb-4 md:mb-6 tracking-tight drop-shadow-sm text-3xl md:text-5xl">
+            <Heading level={2} size="4xl" className="mb-3 md:mb-6 tracking-tight drop-shadow-sm text-3xl md:text-5xl">
               {t("title")}
             </Heading>
             
-            <p className="text-base md:text-xl text-muted-foreground mb-8 md:mb-10 leading-relaxed max-w-2xl text-shadow-sm px-2">
+            <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-10 leading-relaxed max-w-2xl text-shadow-sm px-2">
               {t("subtitle")}
             </p>
             
-            <CtaButton size="lg" className="w-full sm:w-auto text-base md:text-lg px-6 py-4 md:px-8 md:py-6 rounded-xl font-bold bg-gradient-to-b from-primary/80 to-primary shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_6px_0_var(--primary),0_10px_20px_rgba(0,0,0,0.3)] active:translate-y-[6px] active:shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_0px_0_var(--primary),0_4px_8px_rgba(0,0,0,0.3)] transition-all">
+            <CtaButton size="lg" className="w-full sm:w-auto text-sm md:text-lg px-6 py-3 md:px-8 md:py-6 rounded-xl font-bold bg-gradient-to-b from-primary/80 to-primary shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_4px_0_var(--primary),0_8px_16px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_0px_0_var(--primary),0_2px_4px_rgba(0,0,0,0.3)] transition-all">
               {t("button")}
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
             </CtaButton>
           </div>
         </div>

@@ -18,7 +18,7 @@ export function BusinessTransformation() {
   return (
     <Section>
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -28,10 +28,10 @@ export function BusinessTransformation() {
             <div className="mb-4 inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-sm font-medium text-accent">
               The Sgency Advantage
             </div>
-            <Heading level={2} className="mb-6">
+            <Heading level={2} className="mb-4 md:mb-6 text-3xl md:text-5xl">
               Transform your business from the inside out.
             </Heading>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground mb-6 md:mb-8 leading-relaxed">
               We don&apos;t just build websites or run ads. We architect complete digital ecosystems designed to attract, convert, and retain high-value clients while automating your fulfillment.
             </p>
             
@@ -57,7 +57,7 @@ export function BusinessTransformation() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="relative rounded-[2rem] overflow-hidden aspect-square lg:aspect-[4/5] bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-900 dark:to-zinc-950 border-[1px] border-white/80 dark:border-white/10 shadow-[inset_0_2px_10px_rgba(255,255,255,0.8),0_20px_40px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_10px_rgba(255,255,255,0.1),0_20px_40px_rgba(0,0,0,0.5)] flex items-center justify-center p-6 sm:p-8"
+            className="relative rounded-[2rem] overflow-hidden aspect-square lg:aspect-[4/5] bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-900 dark:to-zinc-950 border-[1px] border-white/80 dark:border-white/10 shadow-[inset_0_2px_10px_rgba(255,255,255,0.8),0_20px_40px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_2px_10px_rgba(255,255,255,0.1),0_20px_40px_rgba(0,0,0,0.5)] flex items-center justify-center p-4 sm:p-8"
           >
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] dark:opacity-10 pointer-events-none" />
             

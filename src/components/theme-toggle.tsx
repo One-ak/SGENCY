@@ -7,19 +7,15 @@ import { useTheme } from "next-themes"
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
+  const [isVisualDark, setIsVisualDark] = React.useState(false);
 
   React.useEffect(() => {
     setMounted(true)
-  }, [])
+    const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    setIsVisualDark(isDark);
+  }, [theme])
 
   if (!mounted) return null
-
-  const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
-  const [isVisualDark, setIsVisualDark] = React.useState(isDark);
-
-  React.useEffect(() => {
-    setIsVisualDark(isDark);
-  }, [isDark]);
 
   const toggleTheme = () => {
     const nextTheme = isVisualDark ? "light" : "dark";

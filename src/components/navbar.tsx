@@ -16,6 +16,8 @@ export function Navbar() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = React.useState(false)
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+
   React.useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
@@ -28,9 +30,11 @@ export function Navbar() {
     <header
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 border-b",
-        scrolled 
-          ? "bg-background/80 backdrop-blur-md border-border/50 shadow-md shadow-primary/5" 
-          : "bg-background/50 backdrop-blur-sm border-transparent"
+        isMobileMenuOpen
+          ? "bg-background border-transparent"
+          : scrolled 
+            ? "bg-background/80 backdrop-blur-md border-border/50 shadow-md shadow-primary/5" 
+            : "bg-background/50 backdrop-blur-sm border-transparent"
       )}
     >
       <Container>
@@ -86,7 +90,7 @@ export function Navbar() {
             <div className="flex items-center gap-2 md:hidden">
               <LanguageSwitcher />
               <ThemeToggle />
-              <MobileMenu />
+              <MobileMenu isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
             </div>
           </div>
         </div>

@@ -68,7 +68,7 @@ export function PackagesPreview() {
   const t = useTranslations("Packages");
 
   return (
-    <section className="py-24 md:py-32 relative bg-muted/30">
+    <section className="py-16 md:py-32 relative bg-muted/30">
       <Container>
         <motion.div
           variants={containerVariants}
@@ -82,16 +82,16 @@ export function PackagesPreview() {
             {t("badge")}
           </motion.div>
           
-          <motion.div variants={itemVariants} className="text-center max-w-3xl mb-16">
-            <Heading level={2} size="4xl" className="tracking-tight text-foreground mb-4 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
+          <motion.div variants={itemVariants} className="text-center max-w-3xl mb-10 md:mb-16">
+            <Heading level={2} size="4xl" className="tracking-tight text-foreground mb-4 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] text-3xl md:text-5xl">
               {t("title")}
             </Heading>
-            <p className="text-lg text-muted-foreground leading-relaxed text-shadow-sm">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-shadow-sm px-4">
               {t("subtitle")}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl w-full mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-7xl w-full mx-auto px-2">
             {plans.map((plan, index) => (
               <motion.div
                 key={index}
@@ -129,7 +129,7 @@ export function PackagesPreview() {
                 
                 <Link href="/contact" className="w-full">
                   <Button 
-                    className={`w-full py-6 rounded-xl font-bold text-lg ${
+                    className={`w-full py-4 md:py-6 rounded-xl font-bold text-base md:text-lg ${
                       plan.popular 
                         ? "bg-primary text-primary-foreground hover:bg-primary/90" 
                         : "bg-secondary text-secondary-foreground hover:bg-secondary/80"

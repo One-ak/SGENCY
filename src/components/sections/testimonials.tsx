@@ -45,7 +45,7 @@ export function Testimonials() {
   const t = useTranslations("Testimonials");
 
   return (
-    <section className="py-24 md:py-32 relative bg-background">
+    <section className="py-16 md:py-32 relative bg-background">
       <Container>
         <motion.div
           variants={containerVariants}
@@ -59,16 +59,16 @@ export function Testimonials() {
             {t("badge")}
           </motion.div>
           
-          <motion.div variants={itemVariants} className="text-center max-w-3xl mb-16">
-            <Heading level={2} size="4xl" className="tracking-tight text-foreground mb-4 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
+          <motion.div variants={itemVariants} className="text-center max-w-3xl mb-10 md:mb-16">
+            <Heading level={2} size="4xl" className="tracking-tight text-foreground mb-4 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] text-3xl md:text-5xl">
               {t("title")}
             </Heading>
-            <p className="text-lg text-muted-foreground leading-relaxed text-shadow-sm">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-shadow-sm px-4">
               {t("subtitle")}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 px-2">
             {testimonialsData.map((testimonial, index) => (
               <motion.div
                 key={index}

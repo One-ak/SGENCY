@@ -55,7 +55,7 @@ export function ServicesPreview() {
   ];
 
   return (
-    <section className="py-24 md:py-32 relative bg-muted/50">
+    <section className="py-16 md:py-32 relative bg-muted/50">
       <Container>
         <motion.div
           variants={containerVariants}
@@ -69,23 +69,23 @@ export function ServicesPreview() {
             {t("badge")}
           </motion.div>
           
-          <motion.div variants={itemVariants} className="text-center max-w-3xl mb-16">
-            <Heading level={2} className="tracking-tight text-foreground mb-4 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
+          <motion.div variants={itemVariants} className="text-center max-w-3xl mb-10 md:mb-16">
+            <Heading level={2} className="tracking-tight text-foreground mb-4 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] text-3xl md:text-5xl">
               {t("title")}
             </Heading>
-            <p className="text-lg text-muted-foreground leading-relaxed text-shadow-sm">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-shadow-sm px-4">
               {t("subtitle")}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full max-w-6xl mx-auto px-2">
             {servicesData.map((service, index) => {
               return (
                 <motion.div key={index} variants={itemVariants} className={`h-full ${service.className}`}>
                   <Card3DTilt className="h-full">
                     <div
                       className={cn(
-                        "group relative overflow-hidden rounded-3xl border-2 border-b-4 border-gray-300 dark:border-zinc-700 bg-gradient-to-b from-gray-50 to-gray-200 dark:from-zinc-800 dark:to-zinc-900 p-8 shadow-[inset_0_2px_0_rgba(255,255,255,0.8),0_10px_20px_rgba(0,0,0,0.1)] transition-all hover:-translate-y-1 hover:shadow-[inset_0_2px_0_rgba(255,255,255,0.8),0_15px_30px_rgba(0,0,0,0.15)] h-full min-h-[300px] flex flex-col",
+                        "group relative overflow-hidden rounded-3xl border-2 border-b-4 border-gray-300 dark:border-zinc-700 bg-gradient-to-b from-gray-50 to-gray-200 dark:from-zinc-800 dark:to-zinc-900 p-6 md:p-8 shadow-[inset_0_2px_0_rgba(255,255,255,0.8),0_10px_20px_rgba(0,0,0,0.1)] transition-all hover:-translate-y-1 hover:shadow-[inset_0_2px_0_rgba(255,255,255,0.8),0_15px_30px_rgba(0,0,0,0.15)] h-full min-h-[250px] md:min-h-[300px] flex flex-col",
                       )}
                     >
                       <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gray-300 dark:bg-zinc-900 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2),0_1px_0_rgba(255,255,255,0.5)]">

@@ -39,7 +39,7 @@ const marqueeItems = [
 export function Hero() {
   const t = useTranslations("Hero")
   return (
-    <section className="pt-32 pb-20 md:pt-48 md:pb-32 relative overflow-hidden flex flex-col justify-center min-h-[90vh]">
+    <section className="pt-24 pb-12 md:pt-48 md:pb-32 relative overflow-hidden flex flex-col justify-center min-h-[90vh]">
       
       {/* Static Glowing Orbs Background (Optimized for Performance) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -59,27 +59,27 @@ export function Hero() {
 
           {/* Embossed Text */}
           <motion.div variants={itemVariants}>
-            <Heading as="h1" size="5xl" className="text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] tracking-tighter text-foreground mb-6 font-heading drop-shadow-[0_2px_1px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)] leading-[1.1]">
+            <Heading as="h1" size="5xl" className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] tracking-tighter text-foreground mb-4 md:mb-6 font-heading drop-shadow-[0_2px_1px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)] leading-[1.1]">
               {t("build")}<span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-blue-600">{t("scale")}</span>
             </Heading>
           </motion.div>
           
-          <motion.p variants={itemVariants} className="text-xl md:text-2xl font-medium text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed text-shadow-sm">
+          <motion.p variants={itemVariants} className="text-lg md:text-2xl font-medium text-muted-foreground max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed text-shadow-sm px-2">
             {t("subtitle")}
           </motion.p>
           
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full sm:w-auto"
+            className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center w-full sm:w-auto px-4"
           >
             <Link href="/contact" className="w-full sm:w-auto">
-              <CtaButton size="lg" className="w-full text-lg px-10 py-7 rounded-2xl font-bold bg-gradient-to-b from-primary/80 to-primary shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_6px_0_var(--primary),0_10px_20px_rgba(0,0,0,0.3)] active:translate-y-[6px] active:shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_0px_0_var(--primary),0_4px_8px_rgba(0,0,0,0.3)] transition-all">
+              <CtaButton size="lg" className="w-full text-base md:text-lg px-6 py-4 md:px-10 md:py-6 rounded-2xl font-bold bg-gradient-to-b from-primary/80 to-primary shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_6px_0_var(--primary),0_10px_20px_rgba(0,0,0,0.3)] active:translate-y-[6px] active:shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_0px_0_var(--primary),0_4px_8px_rgba(0,0,0,0.3)] transition-all">
                 {t("bookCall")}
               </CtaButton>
             </Link>
             <Link 
               href="/portfolio" 
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full sm:w-auto text-lg px-10 py-7 rounded-2xl font-bold border-2 border-b-4 border-gray-300 dark:border-zinc-700 bg-gradient-to-b from-gray-50 to-gray-200 dark:from-zinc-800 dark:to-zinc-900 shadow-[inset_0_2px_0_rgba(255,255,255,0.8),0_4px_10px_rgba(0,0,0,0.1)] active:border-b-2 active:translate-y-[2px] transition-all")}
+              className={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full sm:w-auto text-base md:text-lg px-6 py-4 md:px-10 md:py-6 rounded-2xl font-bold border-2 border-b-4 border-gray-300 dark:border-zinc-700 bg-gradient-to-b from-gray-50 to-gray-200 dark:from-zinc-800 dark:to-zinc-900 shadow-[inset_0_2px_0_rgba(255,255,255,0.8),0_4px_10px_rgba(0,0,0,0.1)] active:border-b-2 active:translate-y-[2px] transition-all")}
             >
               {t("viewWork")}
             </Link>

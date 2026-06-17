@@ -9,6 +9,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
+import { Bot, Code, TrendingUp, Layers, Users, Search, Palette, Database } from "lucide-react"
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -26,14 +27,14 @@ const itemVariants: Variants = {
 }
 
 const marqueeItems = [
-  "AI AUTOMATION",
-  "CUSTOM WEBSITES",
-  "GROWTH MARKETING",
-  "SCALABLE SOFTWARE",
-  "LEAD GENERATION",
-  "SEO OPTIMIZATION",
-  "BRAND DESIGN",
-  "CRM INTEGRATION",
+  { text: "AI AUTOMATION", icon: Bot },
+  { text: "CUSTOM WEBSITES", icon: Code },
+  { text: "GROWTH MARKETING", icon: TrendingUp },
+  { text: "SCALABLE SOFTWARE", icon: Layers },
+  { text: "LEAD GENERATION", icon: Users },
+  { text: "SEO OPTIMIZATION", icon: Search },
+  { text: "BRAND DESIGN", icon: Palette },
+  { text: "CRM INTEGRATION", icon: Database },
 ]
 
 export function Hero() {
@@ -97,8 +98,9 @@ export function Hero() {
         <div className="flex w-max animate-[marquee_30s_linear_infinite]">
           {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
             <div key={i} className="flex items-center mx-8">
+              <item.icon className="w-4 h-4 md:w-5 md:h-5 mr-3 text-primary/70" />
               <span className="text-xs md:text-base font-bold tracking-widest text-foreground/60 uppercase whitespace-nowrap">
-                {item}
+                {item.text}
               </span>
               <div className="w-1.5 h-1.5 rounded-full bg-primary/50 ml-16" />
             </div>

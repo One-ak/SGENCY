@@ -56,12 +56,7 @@ export function Hero() {
           animate="visible"
           className="flex flex-col items-center w-full"
         >
-          {/* Skeuomorphic Badge */}
-          <motion.div variants={itemVariants} className="inline-flex items-center rounded-full border border-white/40 dark:border-white/10 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md px-5 py-2 text-sm font-bold text-gray-800 dark:text-zinc-200 shadow-[0_4px_12px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.1)] mb-8">
-            <span className="flex h-2.5 w-2.5 rounded-full bg-green-500 mr-3 shadow-[0_0_8px_rgba(34,197,94,0.8)] animate-pulse"></span>
-            {t("badge")}
-          </motion.div>
-          
+
           {/* Embossed Text */}
           <motion.div variants={itemVariants}>
             <Heading as="h1" size="5xl" className="text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] tracking-tighter text-foreground mb-6 font-heading drop-shadow-[0_2px_1px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_2px_1px_rgba(0,0,0,0.8)] leading-[1.1]">

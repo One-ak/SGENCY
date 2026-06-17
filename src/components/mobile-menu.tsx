@@ -5,6 +5,7 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { createPortal } from "react-dom"
 
 const navLinks = [
   { name: "Services", href: "/services" },
@@ -15,6 +16,11 @@ const navLinks = [
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   React.useEffect(() => {
     if (isOpen) {
@@ -35,17 +41,17 @@ export function MobileMenu() {
       </Button>
 
       <AnimatePresence>
-        {isOpen && (
+        {mounted && isOpen && createPortal(
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex flex-col bg-background p-6"
+            className="fixed inset-0 z-[100] flex flex-col bg-background p-6 h-[100dvh]"
           >
             <div className="flex items-center justify-between mb-8">
               <Link href="/" className="font-heading text-2xl font-bold" onClick={() => setIsOpen(false)}>
-                SGENCY.
+                SGENCY<span className="text-primary">.</span>
               </Link>
               <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
                 <X className="h-6 w-6" />
@@ -67,11 +73,14 @@ export function MobileMenu() {
             </nav>
             
             <div className="mt-auto">
-              <Button className="w-full rounded-full py-6 text-lg" onClick={() => setIsOpen(false)}>
-                Book Consultation
-              </Button>
+              <Link href="/contact" onClick={() => setIsOpen(false)}>
+                <Button className="w-full rounded-full py-6 text-lg">
+                  Book Consultation
+                </Button>
+              </Link>
             </div>
-          </motion.div>
+          </motion.div>,
+          document.body
         )}
       </AnimatePresence>
     </div>

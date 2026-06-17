@@ -15,9 +15,19 @@ export function ThemeToggle() {
   if (!mounted) return null
 
   const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const [isVisualDark, setIsVisualDark] = React.useState(isDark);
+
+  React.useEffect(() => {
+    setIsVisualDark(isDark);
+  }, [isDark]);
 
   const toggleTheme = () => {
-    setTheme(isDark ? "light" : "dark")
+    const nextTheme = isVisualDark ? "light" : "dark";
+    setIsVisualDark(!isVisualDark);
+    // Defer the heavy DOM update to allow the CSS animation to start smoothly
+    setTimeout(() => {
+      setTheme(nextTheme);
+    }, 150);
   }
 
   return (
@@ -34,8 +44,8 @@ export function ThemeToggle() {
       
       {/* Physical Toggle Thumb */}
       <div 
-        className={`absolute top-1 bottom-1 w-5 rounded-full bg-gradient-to-b from-white to-gray-200 dark:from-zinc-300 dark:to-zinc-500 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_2px_2px_rgba(255,255,255,0.9)] border border-gray-300 dark:border-zinc-600 transition-transform duration-300 ease-in-out z-20 ${
-          isDark ? "translate-x-7" : "translate-x-0"
+        className={`absolute top-1 bottom-1 w-5 rounded-full bg-gradient-to-b from-white to-gray-200 dark:from-zinc-300 dark:to-zinc-500 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_2px_2px_rgba(255,255,255,0.9)] border border-gray-300 dark:border-zinc-600 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-20 ${
+          isVisualDark ? "translate-x-7" : "translate-x-0"
         }`}
       >
         {/* Thumb Grip Ridges */}

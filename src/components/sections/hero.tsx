@@ -98,7 +98,9 @@ export function Hero() {
         <div className="flex w-max animate-[marquee_30s_linear_infinite]">
           {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
             <div key={i} className="flex items-center mx-8">
-              <item.icon className="w-4 h-4 md:w-5 md:h-5 mr-3 text-primary/70" />
+              <div className="mr-3 w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-b from-white to-gray-200 dark:from-zinc-700 dark:to-zinc-900 shadow-[0_2px_4px_rgba(0,0,0,0.15),inset_0_2px_2px_rgba(255,255,255,0.9),inset_0_-2px_2px_rgba(0,0,0,0.05)] dark:shadow-[0_2px_4px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-2px_2px_rgba(0,0,0,0.2)] border border-gray-300 dark:border-zinc-600 flex items-center justify-center">
+                <item.icon className="w-4 h-4 md:w-5 md:h-5 text-primary drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]" />
+              </div>
               <span className="text-xs md:text-base font-bold tracking-widest text-foreground/60 uppercase whitespace-nowrap">
                 {item.text}
               </span>

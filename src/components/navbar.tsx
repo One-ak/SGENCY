@@ -38,8 +38,8 @@ export function Navbar() {
       )}
     >
       <Container>
-        <div className="flex h-20 items-center justify-between">
-          <div className="flex items-center gap-8">
+        <div className="flex h-16 md:h-20 items-center justify-between">
+          <div className="flex items-center gap-4 md:gap-8">
             <Link href="/" className="font-heading text-2xl font-bold tracking-tight">
               SGENCY<span className="text-primary">.</span>
             </Link>

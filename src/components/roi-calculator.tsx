@@ -26,7 +26,7 @@ export function RoiCalculator() {
   }
 
   return (
-    <div className="bg-card/50 backdrop-blur-md border border-border rounded-3xl p-8 lg:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+    <div className="bg-card/50 backdrop-blur-md border border-border rounded-3xl p-6 lg:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] max-w-5xl mx-auto">
       <div className="flex items-center gap-3 mb-8">
         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
           <Calculator className="w-6 h-6" />
@@ -37,11 +37,11 @@ export function RoiCalculator() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Side: Inputs */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           {/* Team Size Input */}
-          <div className="bg-muted/30 p-5 rounded-2xl border border-border/50 space-y-4">
+          <div className="bg-muted/30 p-4 rounded-2xl border border-border/50 space-y-3">
             <div className="flex justify-between items-start">
               <div>
                 <label className="text-base font-semibold text-foreground flex items-center gap-2">
@@ -75,7 +75,7 @@ export function RoiCalculator() {
           </div>
 
           {/* Hours Input */}
-          <div className="bg-muted/30 p-5 rounded-2xl border border-border/50 space-y-4">
+          <div className="bg-muted/30 p-4 rounded-2xl border border-border/50 space-y-3">
             <div className="flex justify-between items-start">
               <div>
                 <label className="text-base font-semibold text-foreground flex items-center gap-2">
@@ -110,7 +110,7 @@ export function RoiCalculator() {
           </div>
 
           {/* Hourly Rate Input */}
-          <div className="bg-muted/30 p-5 rounded-2xl border border-border/50 space-y-4">
+          <div className="bg-muted/30 p-4 rounded-2xl border border-border/50 space-y-3">
             <div className="flex justify-between items-start">
               <div>
                 <label className="text-base font-semibold text-foreground flex items-center gap-2">
@@ -148,7 +148,7 @@ export function RoiCalculator() {
         </div>
 
         {/* Right Side: Results */}
-        <div className="bg-background rounded-2xl p-8 border border-border shadow-inner relative overflow-hidden flex flex-col justify-center">
+        <div className="bg-background rounded-2xl p-6 border border-border shadow-inner relative overflow-hidden flex flex-col justify-center">
           <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
           
@@ -170,7 +170,7 @@ export function RoiCalculator() {
                 key={annualSavings}
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="text-4xl lg:text-5xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-primary"
+                className="text-3xl lg:text-4xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-primary"
               >
                 {formatINR(annualSavings)}
               </motion.p>

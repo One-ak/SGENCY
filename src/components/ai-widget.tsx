@@ -2,63 +2,55 @@
 
 import React, { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { MessageSquare, X, Bot, ArrowRight, Sparkles, Send } from "lucide-react"
-import Link from "next/link"
+import { MessageSquare, X, Bot, Sparkles, Send, Mail, CheckCircle2 } from "lucide-react"
+import { useChat } from "@ai-sdk/react"
 
 export function AiWidget() {
   const [isOpen, setIsOpen] = useState(false)
-  const [messages, setMessages] = useState<{ id: number; text: string; sender: "ai" | "user" }[]>([])
-  const [isTyping, setIsTyping] = useState(false)
-  const [inputText, setInputText] = useState("")
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const [isSendingTranscript, setIsSendingTranscript] = useState(false)
+  const [transcriptSent, setTranscriptSent] = useState(false)
+
+  const { messages, input, handleInputChange, handleSubmit, isLoading, append } = useChat({
+    initialMessages: [
+      { id: "1", role: "assistant", content: "Hi there! I'm SGENCY's AI assistant. How can we help you scale your business today?" }
+    ]
+  })
 
   // Auto-scroll to bottom
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [messages, isTyping])
+  }, [messages, isLoading])
 
-  // Initial greeting
-  useEffect(() => {
-    if (isOpen && messages.length === 0) {
-      setIsTyping(true)
-      setTimeout(() => {
-        setMessages([
-          { id: 1, text: "Hi there! I'm SGENCY's AI assistant.", sender: "ai" },
-          { id: 2, text: "How can we help you scale your business today?", sender: "ai" }
-        ])
-        setIsTyping(false)
-      }, 1000)
+  const sendTranscript = async () => {
+    if (messages.length <= 1) return;
+    setIsSendingTranscript(true);
+    
+    const formattedChat = messages.map(m => `${m.role === 'user' ? 'User' : 'AI'}: ${m.content}`).join('\n\n');
+    
+    try {
+      await fetch("https://formsubmit.co/ajax/anshpratapsingh333@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: "New SGENCY AI Chat Transcript",
+          message: formattedChat,
+        }),
+      });
+      setTranscriptSent(true);
+      setTimeout(() => setTranscriptSent(false), 4000);
+    } catch (error) {
+      console.error("Failed to send transcript", error);
+    } finally {
+      setIsSendingTranscript(false);
     }
-  }, [isOpen, messages.length])
-
-  const handleAction = (action: string) => {
-    const userMessage = { id: Date.now(), text: action, sender: "user" as const }
-    setMessages((prev) => [...prev, userMessage])
-    setIsTyping(true)
-
-    setTimeout(() => {
-      let response = "Thanks for reaching out! Our team will get back to you soon. In the meantime, feel free to book a call."
-      const lowerAction = action.toLowerCase()
-      
-      if (lowerAction.includes("service") || lowerAction.includes("offer")) {
-        response = "We specialize in AI Automation, Web Dev, and Marketing. Check out our services page!"
-      } else if (lowerAction.includes("price") || lowerAction.includes("cost") || lowerAction.includes("fee")) {
-        response = "We offer transparent, fixed-fee packages starting at ₹34,999/mo."
-      } else if (lowerAction.includes("contact") || lowerAction.includes("human") || lowerAction.includes("talk")) {
-        response = "I'll connect you right away. Head over to our contact page to book a call!"
-      }
-      
-      setMessages((prev) => [...prev, { id: Date.now() + 1, text: response, sender: "ai" }])
-      setIsTyping(false)
-    }, 1200)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (inputText.trim()) {
-      handleAction(inputText.trim())
-      setInputText("")
-    }
+  const handleActionClick = (action: string) => {
+    append({ role: "user", content: action })
   }
 
   return (
@@ -78,13 +70,25 @@ export function AiWidget() {
                 <Bot className="w-5 h-5" />
                 <span className="font-heading font-medium">SGENCY Agent</span>
               </div>
-              <button 
-                onClick={() => setIsOpen(false)}
-                aria-label="Close AI Assistant"
-                className="hover:bg-primary-foreground/20 p-1.5 rounded-md transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
+              <div className="flex items-center gap-1">
+                {messages.length > 1 && (
+                  <button 
+                    onClick={sendTranscript}
+                    disabled={isSendingTranscript || transcriptSent}
+                    title="Send chat transcript to team"
+                    className="hover:bg-primary-foreground/20 p-1.5 rounded-md transition-colors disabled:opacity-50"
+                  >
+                    {transcriptSent ? <CheckCircle2 className="w-4 h-4 text-green-300" /> : <Mail className="w-4 h-4" />}
+                  </button>
+                )}
+                <button 
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Close AI Assistant"
+                  className="hover:bg-primary-foreground/20 p-1.5 rounded-md transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
             {/* Chat Area */}
@@ -96,17 +100,17 @@ export function AiWidget() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className={`max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed ${
-                      msg.sender === "user" 
+                      msg.role === "user" 
                         ? "bg-primary text-primary-foreground self-end rounded-br-sm" 
                         : "bg-muted/80 text-foreground self-start rounded-bl-sm border border-border/50"
                     }`}
                   >
-                    {msg.text}
+                    {msg.content}
                   </motion.div>
                 ))}
               </AnimatePresence>
               
-              {isTyping && (
+              {isLoading && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -124,10 +128,10 @@ export function AiWidget() {
             <div className="p-3 bg-card/80 backdrop-blur-md border-t border-border flex flex-col gap-2">
               {messages.length <= 2 && (
                 <div className="flex flex-wrap gap-2 mb-1">
-                  <button onClick={() => handleAction("View Services")} className="text-xs py-1.5 px-3 rounded-full border border-primary/30 bg-primary/5 text-primary hover:bg-primary/10 transition-colors">
+                  <button onClick={() => handleActionClick("View Services")} className="text-xs py-1.5 px-3 rounded-full border border-primary/30 bg-primary/5 text-primary hover:bg-primary/10 transition-colors">
                     View Services
                   </button>
-                  <button onClick={() => handleAction("See Pricing")} className="text-xs py-1.5 px-3 rounded-full border border-primary/30 bg-primary/5 text-primary hover:bg-primary/10 transition-colors">
+                  <button onClick={() => handleActionClick("See Pricing")} className="text-xs py-1.5 px-3 rounded-full border border-primary/30 bg-primary/5 text-primary hover:bg-primary/10 transition-colors">
                     See Pricing
                   </button>
                 </div>
@@ -140,15 +144,15 @@ export function AiWidget() {
                 <input 
                   type="text" 
                   aria-label="Type your message"
-                  value={inputText}
-                  onChange={(e) => setInputText(e.target.value)}
+                  value={input}
+                  onChange={handleInputChange}
                   placeholder="Type a message..." 
                   className="flex-1 bg-transparent px-3 py-2 text-sm outline-none text-foreground placeholder:text-muted-foreground"
                 />
                 <button 
                   type="submit" 
                   aria-label="Send message"
-                  disabled={!inputText.trim()}
+                  disabled={!input.trim() || isLoading}
                   className="w-8 h-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary/90 transition-colors"
                 >
                   <Send className="w-4 h-4 -ml-0.5" />

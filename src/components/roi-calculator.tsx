@@ -44,13 +44,14 @@ export function RoiCalculator() {
           <div className="bg-muted/30 p-4 rounded-2xl border border-border/50 space-y-3">
             <div className="flex justify-between items-start">
               <div>
-                <label className="text-base font-semibold text-foreground flex items-center gap-2">
+                <label htmlFor="team-size" className="text-base font-semibold text-foreground flex items-center gap-2">
                   <Users className="w-4 h-4 text-primary" /> Team Size
                 </label>
                 <p className="text-xs text-muted-foreground mt-1">Employees doing manual tasks</p>
               </div>
               <div className="flex items-center bg-background border border-border rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-primary/30 shadow-sm">
                 <input 
+                  id="team-size"
                   type="number" 
                   min="1" 
                   max="50" 
@@ -62,6 +63,7 @@ export function RoiCalculator() {
             </div>
             <input 
               type="range" 
+              aria-label="Team size range"
               min="1" 
               max="50" 
               value={employees} 
@@ -78,13 +80,14 @@ export function RoiCalculator() {
           <div className="bg-muted/30 p-4 rounded-2xl border border-border/50 space-y-3">
             <div className="flex justify-between items-start">
               <div>
-                <label className="text-base font-semibold text-foreground flex items-center gap-2">
+                <label htmlFor="hours-per-week" className="text-base font-semibold text-foreground flex items-center gap-2">
                   <Clock className="w-4 h-4 text-primary" /> Hours / Week
                 </label>
                 <p className="text-xs text-muted-foreground mt-1">Time spent per employee</p>
               </div>
               <div className="flex items-center bg-background border border-border rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-primary/30 shadow-sm px-2">
                 <input 
+                  id="hours-per-week"
                   type="number" 
                   min="1" 
                   max="40" 
@@ -97,6 +100,7 @@ export function RoiCalculator() {
             </div>
             <input 
               type="range" 
+              aria-label="Hours per week range"
               min="1" 
               max="40" 
               value={hoursPerWeek} 
@@ -113,7 +117,7 @@ export function RoiCalculator() {
           <div className="bg-muted/30 p-4 rounded-2xl border border-border/50 space-y-3">
             <div className="flex justify-between items-start">
               <div>
-                <label className="text-base font-semibold text-foreground flex items-center gap-2">
+                <label htmlFor="hourly-rate" className="text-base font-semibold text-foreground flex items-center gap-2">
                   <IndianRupee className="w-4 h-4 text-primary" /> Hourly Rate
                 </label>
                 <p className="text-xs text-muted-foreground mt-1">Average pay per hour</p>
@@ -121,6 +125,7 @@ export function RoiCalculator() {
               <div className="flex items-center bg-background border border-border rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-primary/30 shadow-sm px-2">
                 <span className="text-muted-foreground text-sm font-medium mr-1">₹</span>
                 <input 
+                  id="hourly-rate"
                   type="number" 
                   min="100" 
                   max="2000" 
@@ -133,6 +138,7 @@ export function RoiCalculator() {
             </div>
             <input 
               type="range" 
+              aria-label="Hourly rate range"
               min="100" 
               max="2000" 
               step="50"

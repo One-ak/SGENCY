@@ -32,16 +32,21 @@ export function Footer() {
             <h3 className="text-2xl font-heading font-bold mb-2">Join our insider list.</h3>
             <p className="text-muted-foreground text-sm">Get our weekly insights on AI Automation and engineering scalable systems.</p>
           </div>
-          <div className="w-full md:w-auto flex gap-2">
+          <form 
+            onSubmit={(e) => e.preventDefault()}
+            className="w-full md:w-auto flex gap-2"
+          >
             <input 
               type="email" 
+              aria-label="Email address for newsletter"
               placeholder="hello@yourcompany.com" 
               className="px-4 py-3 bg-muted/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 w-full md:w-[300px]"
+              required
             />
-            <button className="px-6 py-3 bg-foreground text-background font-medium rounded-xl hover:opacity-90 transition-opacity whitespace-nowrap">
+            <button type="submit" className="px-6 py-3 bg-foreground text-background font-medium rounded-xl hover:opacity-90 transition-opacity whitespace-nowrap">
               Subscribe
             </button>
-          </div>
+          </form>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">

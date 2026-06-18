@@ -1,6 +1,7 @@
 import * as React from "react"
 import { notFound } from "next/navigation"
 import { CheckCircle2 } from "lucide-react"
+import Link from "next/link"
 import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
 import { Heading } from "@/components/ui/heading"
@@ -44,9 +45,11 @@ export default async function ServiceSubpage({ params }: PageProps) {
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
               {service.description}
             </p>
-            <CtaButton size="lg">
-              Discuss Your Project
-            </CtaButton>
+            <Link href="/contact">
+              <CtaButton size="lg">
+                Discuss Your Project
+              </CtaButton>
+            </Link>
           </div>
         </Container>
       </Section>
@@ -106,7 +109,9 @@ export default async function ServiceSubpage({ params }: PageProps) {
                     <p className="text-sm text-muted-foreground mb-8">
                       Pricing varies based on scope and complexity.
                     </p>
-                    <CtaButton className="w-full">Get a Quote</CtaButton>
+                    <Link href="/contact" className="w-full">
+                      <CtaButton className="w-full">Get a Quote</CtaButton>
+                    </Link>
                   </CardContent>
                 </Card>
 

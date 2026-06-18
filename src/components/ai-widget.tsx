@@ -80,6 +80,7 @@ export function AiWidget() {
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
+                aria-label="Close AI Assistant"
                 className="hover:bg-primary-foreground/20 p-1.5 rounded-md transition-colors"
               >
                 <X className="w-4 h-4" />
@@ -138,6 +139,7 @@ export function AiWidget() {
               >
                 <input 
                   type="text" 
+                  aria-label="Type your message"
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   placeholder="Type a message..." 
@@ -145,6 +147,7 @@ export function AiWidget() {
                 />
                 <button 
                   type="submit" 
+                  aria-label="Send message"
                   disabled={!inputText.trim()}
                   className="w-8 h-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary/90 transition-colors"
                 >
@@ -159,6 +162,7 @@ export function AiWidget() {
       {/* Floating Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close AI Assistant" : "Open AI Assistant"}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="w-14 h-14 bg-gradient-to-tr from-primary to-blue-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-primary/30 relative"

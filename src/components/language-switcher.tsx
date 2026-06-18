@@ -14,19 +14,16 @@ export function LanguageSwitcher() {
 
   const toggleLocale = () => {
     setIsVisualEn(!isVisualEn);
-    
-    // Let the animation finish before triggering navigation which freezes the thread
-    setTimeout(() => {
-      const nextLocale = locale === "en" ? "hi" : "en";
-      const segments = pathname.split("/");
-      segments[1] = nextLocale;
-      window.location.href = segments.join("/") || `/${nextLocale}`;
-    }, 300);
+    const nextLocale = locale === "en" ? "hi" : "en";
+    const segments = pathname.split("/");
+    segments[1] = nextLocale;
+    window.location.href = segments.join("/") || `/${nextLocale}`;
   };
 
   return (
-    <div 
+    <button 
       onClick={toggleLocale}
+      aria-label="Toggle language"
       className="relative flex items-center justify-between w-14 h-7 px-1 rounded-full cursor-pointer bg-gradient-to-b from-gray-300 to-gray-100 dark:from-zinc-900 dark:to-zinc-700 shadow-[inset_0_4px_6px_rgba(0,0,0,0.3),inset_0_-2px_4px_rgba(255,255,255,0.4)] border border-gray-400 dark:border-zinc-800 transition-all overflow-hidden"
     >
       <span className="text-[9px] font-bold text-gray-500 dark:text-zinc-400 z-10 w-1/2 text-center select-none shadow-sm pointer-events-none">
@@ -49,6 +46,6 @@ export function LanguageSwitcher() {
           <div className="w-[1px] h-2 bg-gray-400/50 shadow-[1px_0_0_rgba(255,255,255,0.8)]"></div>
         </div>
       </div>
-    </div>
+    </button>
   );
 }

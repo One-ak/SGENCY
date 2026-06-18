@@ -20,15 +20,14 @@ export function ThemeToggle() {
   const toggleTheme = () => {
     const nextTheme = isVisualDark ? "light" : "dark";
     setIsVisualDark(!isVisualDark);
-    // Defer the heavy DOM update to allow the CSS animation to start smoothly
-    setTimeout(() => {
-      setTheme(nextTheme);
-    }, 150);
+    // Framer Motion or Next Themes handles CSS transitions smoothly enough
+    setTheme(nextTheme);
   }
 
   return (
-    <div 
+    <button 
       onClick={toggleTheme}
+      aria-label="Toggle theme"
       className="relative flex items-center justify-between w-14 h-7 px-1 rounded-full cursor-pointer bg-gradient-to-b from-gray-300 to-gray-100 dark:from-zinc-900 dark:to-zinc-700 shadow-[inset_0_4px_6px_rgba(0,0,0,0.3),inset_0_-2px_4px_rgba(255,255,255,0.4)] border border-gray-400 dark:border-zinc-800 transition-all overflow-hidden"
     >
       <div className="z-10 w-1/2 flex justify-center text-gray-500 dark:text-zinc-400 drop-shadow-sm pointer-events-none">
@@ -51,6 +50,6 @@ export function ThemeToggle() {
           <div className="w-[1px] h-2 bg-gray-400/50 shadow-[1px_0_0_rgba(255,255,255,0.8)]"></div>
         </div>
       </div>
-    </div>
+    </button>
   )
 }

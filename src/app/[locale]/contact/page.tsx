@@ -15,9 +15,27 @@ export default function ContactPage() {
   // Form State
   const [name, setName] = React.useState("")
   const [email, setEmail] = React.useState("")
+  const [phone, setPhone] = React.useState("")
   const [company, setCompany] = React.useState("")
   const [budget, setBudget] = React.useState("")
+  const [timeline, setTimeline] = React.useState("")
+  const [selectedServices, setSelectedServices] = React.useState<string[]>([])
   const [message, setMessage] = React.useState("")
+
+  const handleServiceToggle = (service: string) => {
+    setSelectedServices(prev => 
+      prev.includes(service) 
+        ? prev.filter(s => s !== service)
+        : [...prev, service]
+    )
+  }
+
+  const availableServices = [
+    "AI Automation", "Website Development", 
+    "Software Development", "Digital Marketing", 
+    "Branding & Design", "Video Production", 
+    "Business Consulting"
+  ]
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -33,8 +51,11 @@ export default function ContactPage() {
         body: JSON.stringify({
           name,
           email,
+          phone,
           company,
           budget,
+          timeline,
+          services: selectedServices.join(", "),
           message,
           _subject: "New General Inquiry - Sgency Contact Form"
         })
@@ -45,8 +66,11 @@ export default function ContactPage() {
       // Reset form
       setName("")
       setEmail("")
+      setPhone("")
       setCompany("")
       setBudget("")
+      setTimeline("")
+      setSelectedServices([])
       setMessage("")
       
       setTimeout(() => setIsSubmitted(false), 5000)
@@ -134,84 +158,133 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="bg-card border border-border rounded-3xl p-8 lg:p-12 shadow-sm">
-              <Heading level={3} className="mb-2">Send an inquiry</Heading>
-              <p className="text-muted-foreground mb-8">We usually respond within 24 hours.</p>
+            <div className="bg-card border border-border rounded-3xl p-6 lg:p-8 shadow-sm">
+              <Heading level={3} className="mb-2 text-2xl">Send an inquiry</Heading>
+              <p className="text-muted-foreground mb-6 text-sm">We usually respond within 24 hours.</p>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">Full Name</label>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label htmlFor="name" className="text-sm font-medium">Name</label>
                     <input 
                       id="name" 
                       type="text" 
                       required 
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full h-12 px-4 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow"
-                      placeholder="John Doe"
+                      className="w-full h-10 px-3 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow"
+                      placeholder="Your name"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">Email Address</label>
+                  <div className="space-y-1.5">
+                    <label htmlFor="company" className="text-sm font-medium">Company</label>
+                    <input 
+                      id="company" 
+                      type="text" 
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
+                      className="w-full h-10 px-3 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow"
+                      placeholder="Company name"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label htmlFor="email" className="text-sm font-medium">Email</label>
                     <input 
                       id="email" 
                       type="email" 
                       required 
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full h-12 px-4 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow"
-                      placeholder="john@company.com"
+                      className="w-full h-10 px-3 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow"
+                      placeholder="you@company.com"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="phone" className="text-sm font-medium">Phone</label>
+                    <input 
+                      id="phone" 
+                      type="tel" 
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className="w-full h-10 px-3 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow"
+                      placeholder="+91 ..."
                     />
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="company" className="text-sm font-medium">Company (Optional)</label>
-                    <input 
-                      id="company" 
-                      type="text" 
-                      value={company}
-                      onChange={(e) => setCompany(e.target.value)}
-                      className="w-full h-12 px-4 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow"
-                      placeholder="Acme Corp"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="budget" className="text-sm font-medium">Project Budget</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label htmlFor="budget" className="text-sm font-medium">Budget</label>
                     <select 
                       id="budget" 
                       value={budget}
                       onChange={(e) => setBudget(e.target.value)}
-                      className="w-full h-12 px-4 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow appearance-none"
+                      className="w-full h-10 px-3 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow appearance-none"
                     >
-                      <option value="">Select a range...</option>
+                      <option value="">Select budget</option>
                       <option value="under-50k">Under ₹50,000</option>
                       <option value="50k-1L">₹50,000 - ₹1,00,000</option>
                       <option value="1L-5L">₹1,00,000 - ₹5,00,000</option>
                       <option value="5L+">₹5,00,000+</option>
                     </select>
                   </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="timeline" className="text-sm font-medium">Timeline</label>
+                    <select 
+                      id="timeline" 
+                      value={timeline}
+                      onChange={(e) => setTimeline(e.target.value)}
+                      className="w-full h-10 px-3 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow appearance-none"
+                    >
+                      <option value="">Select timeline</option>
+                      <option value="asap">ASAP</option>
+                      <option value="1-3-months">1-3 months</option>
+                      <option value="3-6-months">3-6 months</option>
+                      <option value="flexible">Flexible</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Services</label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {availableServices.map((service) => (
+                      <label 
+                        key={service} 
+                        className={`flex items-center gap-2 p-2 rounded-lg border cursor-pointer transition-colors ${selectedServices.includes(service) ? "border-primary bg-primary/5" : "border-border bg-background hover:bg-muted/50"}`}
+                      >
+                        <input 
+                          type="checkbox" 
+                          className="w-3.5 h-3.5 rounded text-primary border-border focus:ring-primary"
+                          checked={selectedServices.includes(service)}
+                          onChange={() => handleServiceToggle(service)}
+                        />
+                        <span className="text-xs font-medium">{service}</span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
                 
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">Project Details</label>
+                <div className="space-y-1.5">
+                  <label htmlFor="message" className="text-sm font-medium">Message</label>
                   <textarea 
                     id="message" 
                     required 
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    rows={5}
-                    className="w-full p-4 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow resize-none"
-                    placeholder="Tell us about your goals, timeline, and current challenges..."
+                    rows={3}
+                    className="w-full p-3 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow resize-none"
+                    placeholder="Describe the goals, current blockers, and what success should look like."
                   />
                 </div>
                 
                 <Button 
                   type="submit" 
                   size="lg" 
-                  className="w-full rounded-xl h-14 text-base"
+                  className="w-full rounded-lg h-12 text-sm"
                   disabled={isSubmitting || isSubmitted}
                 >
                   {isSubmitting ? (

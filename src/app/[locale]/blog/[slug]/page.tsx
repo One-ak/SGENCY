@@ -87,17 +87,19 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {post.readTime}
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full overflow-hidden bg-muted">
-                  <img src={post.author.avatar} alt={post.author.name} className="w-full h-full object-cover" />
+                <div className="w-6 h-6 rounded-full overflow-hidden bg-muted relative">
+                  <Image src={post.author.avatar} alt={post.author.name} width={24} height={24} className="w-full h-full object-cover" />
                 </div>
                 {post.author.name}
               </div>
             </div>
 
             <div className="w-full relative rounded-3xl overflow-hidden mb-16 shadow-2xl bg-muted/20 border border-border">
-              <img 
+              <Image 
                 src={post.image} 
                 alt={post.title} 
+                width={1200}
+                height={600}
                 className="w-full h-auto max-h-[600px] object-contain"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent pointer-events-none" />

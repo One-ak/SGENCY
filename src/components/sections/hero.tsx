@@ -44,9 +44,9 @@ export function Hero() {
       
       {/* Static Glowing Orbs Background (Optimized for Performance) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[100px] opacity-70" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/20 blur-[100px] opacity-70" />
-        <div className="absolute top-[40%] left-[60%] w-[30%] h-[30%] rounded-full bg-purple-500/20 blur-[80px] opacity-70" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,rgba(108,92,231,0.4)_0%,transparent_70%)] opacity-50" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.4)_0%,transparent_70%)] opacity-50" />
+        <div className="absolute top-[40%] left-[60%] w-[30%] h-[30%] rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.4)_0%,transparent_70%)] opacity-50" />
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] dark:opacity-10" />
       </div>
 
@@ -109,14 +109,6 @@ export function Hero() {
           ))}
         </div>
       </motion.div>
-
-      {/* Injecting marquee animation keyframes into the document */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-33.33%); }
-        }
-      `}} />
     </section>
   )
 }

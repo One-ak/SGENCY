@@ -6,6 +6,7 @@ import { Heading } from "@/components/ui/heading"
 import { CtaButton } from "@/components/cta-button"
 import { ArrowRight } from "lucide-react"
 import { useTranslations } from "next-intl"
+import Link from "next/link"
 
 export function FinalCta() {
   const t = useTranslations("FinalCta");
@@ -25,10 +26,12 @@ export function FinalCta() {
               {t("subtitle")}
             </p>
             
-            <CtaButton size="lg" className="w-full sm:w-auto text-sm md:text-lg px-6 py-3 md:px-8 md:py-6 rounded-xl font-bold bg-gradient-to-b from-primary/80 to-primary shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_4px_0_var(--primary),0_8px_16px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_0px_0_var(--primary),0_2px_4px_rgba(0,0,0,0.3)] transition-all">
-              {t("button")}
-              <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
-            </CtaButton>
+            <Link href="/contact" className="w-full sm:w-auto">
+              <CtaButton size="lg" className="w-full sm:w-auto text-sm md:text-lg px-6 py-3 md:px-8 md:py-6 rounded-xl font-bold bg-gradient-to-b from-primary/80 to-primary shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_4px_0_var(--primary),0_8px_16px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_0px_0_var(--primary),0_2px_4px_rgba(0,0,0,0.3)] transition-all">
+                {t("button")}
+                <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
+              </CtaButton>
+            </Link>
           </div>
         </div>
       </Container>

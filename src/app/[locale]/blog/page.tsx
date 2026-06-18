@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Calendar, Clock } from "lucide-react"
 import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
@@ -55,10 +56,11 @@ export default function BlogPage() {
                   <div className="h-full flex flex-col p-6 rounded-3xl bg-card/40 backdrop-blur-md border border-white/10 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(108,92,231,0.15)] transition-all duration-300 hover:-translate-y-2 hover:bg-card/80">
                     
                     <div className="mb-6 relative w-full h-48 rounded-2xl overflow-hidden bg-muted">
-                      <img 
+                      <Image 
                         src={post.image} 
                         alt={post.title} 
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
 

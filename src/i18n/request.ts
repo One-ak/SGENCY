@@ -6,12 +6,10 @@ const locales = ['en', 'hi'];
 
 export default getRequestConfig(async ({requestLocale}) => {
   const locale = await requestLocale;
-  console.log("i18n request config locale:", locale);
   
   // Validate that the incoming `locale` parameter is valid
   let finalLocale: string = locale || 'en';
   if (!locales.includes(finalLocale)) {
-    console.log("Locale not found or undefined, falling back to 'en'");
     finalLocale = 'en';
   }
 

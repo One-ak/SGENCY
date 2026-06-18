@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MessageSquare, X, Bot, Sparkles, Send, Mail, CheckCircle2 } from "lucide-react"
 import { useChat } from "ai/react"
+import Image from "next/image"
 
 export function AiWidget() {
   const [isOpen, setIsOpen] = useState(false)
@@ -67,7 +68,7 @@ export function AiWidget() {
             {/* Header */}
             <div className="bg-primary p-4 flex items-center justify-between text-primary-foreground shadow-sm">
               <div className="flex items-center gap-2">
-                <Bot className="w-5 h-5" />
+                <Image src="/panda-agent.png" alt="Panda Agent" width={24} height={24} className="rounded-full" />
                 <span className="font-heading font-medium">SGENCY Agent</span>
               </div>
               <div className="flex items-center gap-1">
@@ -178,7 +179,7 @@ export function AiWidget() {
             </motion.div>
           ) : (
             <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} className="relative">
-              <MessageSquare className="w-6 h-6" />
+              <Image src="/panda-agent.png" alt="Panda Agent" width={28} height={28} className="rounded-full" />
               <motion.div 
                 className="absolute -top-1 -right-2 text-yellow-300"
                 animate={{ rotate: [0, 10, -10, 0] }}

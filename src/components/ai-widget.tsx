@@ -4,7 +4,25 @@ import React, { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MessageSquare, X, Bot, Sparkles, Send, Mail, CheckCircle2 } from "lucide-react"
 import { useChat } from "ai/react"
-import Image from "next/image"
+
+const SgencyBotIcon = ({ className = "w-6 h-6", isLarge = false }: { className?: string, isLarge?: boolean }) => (
+  <div className={`relative flex items-center justify-center bg-gradient-to-tr from-primary to-blue-600 shadow-sm ${className} ${isLarge ? 'rounded-2xl rounded-br-md' : 'rounded-[10px] rounded-br-[3px]'}`}>
+    <div className={`flex ${isLarge ? 'gap-[6px]' : 'gap-[3px]'}`}>
+      <motion.div 
+        className={`bg-white rounded-full ${isLarge ? 'w-1.5 h-4' : 'w-1 h-2.5'}`}
+        animate={{ scaleY: [1, 0.1, 1] }}
+        transition={{ repeat: Infinity, duration: 4, times: [0, 0.05, 0.1], ease: "easeInOut" }}
+        style={{ originY: 0.5 }}
+      />
+      <motion.div 
+        className={`bg-white rounded-full ${isLarge ? 'w-1.5 h-4' : 'w-1 h-2.5'}`}
+        animate={{ scaleY: [1, 0.1, 1] }}
+        transition={{ repeat: Infinity, duration: 4, times: [0, 0.05, 0.1], ease: "easeInOut" }}
+        style={{ originY: 0.5 }}
+      />
+    </div>
+  </div>
+)
 
 export function AiWidget() {
   const [isOpen, setIsOpen] = useState(false)
@@ -68,7 +86,7 @@ export function AiWidget() {
             {/* Header */}
             <div className="bg-primary p-4 flex items-center justify-between text-primary-foreground shadow-sm">
               <div className="flex items-center gap-2">
-                <Image src="/panda-agent.png" alt="Panda Agent" width={24} height={24} className="rounded-full" />
+                <SgencyBotIcon className="w-6 h-6" isLarge={false} />
                 <span className="font-heading font-medium">SGENCY Agent</span>
               </div>
               <div className="flex items-center gap-1">
@@ -170,7 +188,7 @@ export function AiWidget() {
         aria-label={isOpen ? "Close AI Assistant" : "Open AI Assistant"}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 bg-gradient-to-tr from-primary to-blue-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-primary/30 relative"
+        className="w-14 h-14 bg-gradient-to-tr from-primary to-blue-600 rounded-2xl rounded-br-[6px] flex items-center justify-center text-white shadow-lg shadow-primary/30 relative outline-none"
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
@@ -178,14 +196,27 @@ export function AiWidget() {
               <X className="w-6 h-6" />
             </motion.div>
           ) : (
-            <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} className="relative">
-              <Image src="/panda-agent.png" alt="Panda Agent" width={28} height={28} className="rounded-full" />
+            <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} className="relative flex items-center justify-center w-full h-full">
+              <div className="flex gap-[6px]">
+                <motion.div 
+                  className="bg-white rounded-full w-1.5 h-4"
+                  animate={{ scaleY: [1, 0.1, 1] }}
+                  transition={{ repeat: Infinity, duration: 4, times: [0, 0.05, 0.1], ease: "easeInOut" }}
+                  style={{ originY: 0.5 }}
+                />
+                <motion.div 
+                  className="bg-white rounded-full w-1.5 h-4"
+                  animate={{ scaleY: [1, 0.1, 1] }}
+                  transition={{ repeat: Infinity, duration: 4, times: [0, 0.05, 0.1], ease: "easeInOut" }}
+                  style={{ originY: 0.5 }}
+                />
+              </div>
               <motion.div 
                 className="absolute -top-1 -right-2 text-yellow-300"
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
               >
-                <Sparkles className="w-3 h-3" />
+                <Sparkles className="w-4 h-4" />
               </motion.div>
             </motion.div>
           )}

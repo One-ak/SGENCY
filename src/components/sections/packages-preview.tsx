@@ -44,7 +44,7 @@ const plans = [
       "Everything in Launch +",
       "16 Social Media Posts",
       "6 Reels/Short Videos",
-      "Advanced Website (up to 10 pages)",
+      "Website (up to 5 pages)",
       "Monthly SEO Optimization"
     ],
     popular: true,

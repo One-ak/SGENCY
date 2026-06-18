@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MessageSquare, X, Bot, Sparkles, Send, Mail, CheckCircle2 } from "lucide-react"
-import { useChat } from "@ai-sdk/react"
+import { useChat } from "ai/react"
 
 export function AiWidget() {
   const [isOpen, setIsOpen] = useState(false)

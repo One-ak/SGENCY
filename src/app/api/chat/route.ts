@@ -35,7 +35,7 @@ export async function POST(req: Request) {
       messages,
     });
 
-    return result.toDataStreamResponse();
+    return result.toAIStreamResponse();
   } catch (error) {
     console.error("Chat API Error:", error);
     return new Response("Internal Server Error", { status: 500 });

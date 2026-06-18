@@ -33,8 +33,7 @@ const plans = [
       "8 Social Media Posts",
       "2 Reels/Short Videos",
       "Google Business Profile Setup",
-      "Basic SEO Setup",
-      "1 Landing Page Website (up to 5 pages)"
+      "Basic SEO Setup"
     ],
   },
   {

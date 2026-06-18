@@ -26,17 +26,17 @@ const itemVariants = {
 const testimonialsData = [
   {
     quote: "Sgency completely revolutionized our lead generation. Their automation workflows saved us 40 hours a week while doubling our conversion rate.",
-    author: "Sarah Jenkins",
+    author: "Aanya Sharma",
     role: "CEO, TechFlow",
   },
   {
     quote: "The brand identity and web platform they built is world-class. We immediately saw an increase in enterprise leads after launching.",
-    author: "Marcus Chen",
+    author: "Rajiv Desai",
     role: "Founder, Elevate Capital",
   },
   {
     quote: "Strategic, fast, and incredibly effective. Their paid ads management scaled our e-commerce brand from 6 to 7 figures in 8 months.",
-    author: "Elena Rodriguez",
+    author: "Priya Patel",
     role: "CMO, Lumina",
   },
 ]

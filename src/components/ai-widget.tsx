@@ -30,11 +30,30 @@ export function AiWidget() {
   const [isSendingTranscript, setIsSendingTranscript] = useState(false)
   const [transcriptSent, setTranscriptSent] = useState(false)
 
-  const { messages, input, handleInputChange, handleSubmit, isLoading, append } = useChat({
+  const lastUserMessageRef = useRef<string>("")
+
+  const { messages, input, handleInputChange, handleSubmit, isLoading, append, setMessages } = useChat({
     initialMessages: [
       { id: "1", role: "assistant", content: "Hi there! I'm SGENCY's AI assistant. How can we help you scale your business today?" }
-    ]
+    ],
+    onError: (err) => {
+      console.error(err);
+      setTimeout(() => {
+        setMessages([
+          ...messages,
+          { id: "user-" + Date.now(), role: "user", content: lastUserMessageRef.current },
+          { id: "error-" + Date.now(), role: "assistant", content: "I'm currently offline because the `GOOGLE_GENERATIVE_AI_API_KEY` is missing. Please add it to your environment variables to wake me up!" }
+        ]);
+      }, 50);
+    }
   })
+
+  const handleCustomSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    lastUserMessageRef.current = input;
+    handleSubmit(e);
+  };
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -157,7 +176,7 @@ export function AiWidget() {
               )}
               
               <form 
-                onSubmit={handleSubmit}
+                onSubmit={handleCustomSubmit}
                 className="flex items-center gap-2 bg-muted/50 rounded-xl p-1 pr-1 border border-border focus-within:ring-1 focus-within:ring-primary/50 transition-all shadow-inner"
               >
                 <input 

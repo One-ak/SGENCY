@@ -22,13 +22,10 @@ export async function POST(req: Request) {
 
     if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
       return new Response(
-        `0:"I'm currently offline because the \\\`GOOGLE_GENERATIVE_AI_API_KEY\\\` is missing. Please add it to your environment variables to wake me up!"\n`, 
+        JSON.stringify({ error: "GOOGLE_GENERATIVE_AI_API_KEY is missing" }), 
         { 
-          status: 200,
-          headers: {
-            'X-Vercel-AI-Data-Stream': 'v1',
-            'Content-Type': 'text/plain; charset=utf-8'
-          }
+          status: 500,
+          headers: { 'Content-Type': 'application/json' }
         }
       );
     }

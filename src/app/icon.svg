@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="72" x2="430" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111827" />
+      <stop offset="0.52" stop-color="#1e1b4b" />
+      <stop offset="1" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="mark" x1="134" y1="120" x2="378" y2="392" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" />
+      <stop offset="1" stop-color="#dbeafe" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="matrix(206 224 -224 206 362 120)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="118" fill="url(#bg)" />
+  <rect width="512" height="512" rx="118" fill="url(#glow)" />
+  <path fill="url(#mark)" d="M257 397c-46 0-88-13-120-39l42-51c25 19 52 29 82 29 22 0 35-7 35-20v-1c0-12-10-19-51-29-54-12-96-28-96-82v-1c0-49 39-83 102-83 43 0 77 11 105 34l-38 54c-23-16-47-24-70-24-20 0-30 8-30 18v1c0 14 10 20 52 29 58 13 95 33 95 81v1c0 53-42 83-108 83Z" />
+  <circle cx="361" cy="357" r="36" fill="#7c3aed" />
+  <circle cx="373" cy="345" r="12" fill="#a78bfa" opacity="0.8" />
+</svg>

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { MessageSquare, X, Bot, Sparkles, Send, Mail, CheckCircle2 } from "lucide-react"
+import { X, Sparkles, Send, Mail, CheckCircle2 } from "lucide-react"
 import { useChat } from "ai/react"
 
 const SgencyBotIcon = ({ className = "w-6 h-6", isLarge = false }: { className?: string, isLarge?: boolean }) => (
@@ -39,10 +39,11 @@ export function AiWidget() {
     onError: (err) => {
       console.error(err);
       setTimeout(() => {
+        const failedUserMessage = lastUserMessageRef.current.trim();
         setMessages([
           ...messages,
-          { id: "user-" + Date.now(), role: "user", content: lastUserMessageRef.current },
-          { id: "error-" + Date.now(), role: "assistant", content: "I'm currently offline because the `GOOGLE_GENERATIVE_AI_API_KEY` is missing. Please add it to your environment variables to wake me up!" }
+          ...(failedUserMessage ? [{ id: "user-" + Date.now(), role: "user" as const, content: failedUserMessage }] : []),
+          { id: "error-" + Date.now(), role: "assistant", content: "I'm having trouble connecting to the AI service right now, but the SGENCY team can still help. Please try again in a moment or book a consultation." }
         ]);
       }, 50);
     }
@@ -88,6 +89,7 @@ export function AiWidget() {
   }
 
   const handleActionClick = (action: string) => {
+    lastUserMessageRef.current = action;
     append({ role: "user", content: action })
   }
 

@@ -1,5 +1,5 @@
 import { google } from '@ai-sdk/google';
-import { formatStreamPart, streamText, type CoreMessage } from 'ai';
+import { formatStreamPart, generateText, type CoreMessage } from 'ai';
 
 export const runtime = 'edge';
 
@@ -55,11 +55,11 @@ function createFallbackMessage(messages: CoreMessage[] = []) {
   return "Thanks for reaching out. SGENCY can help with premium web design, custom software, AI automation, digital marketing, branding, and growth consulting. What are you trying to build or scale right now?";
 }
 
-function createFallbackResponse(messages: CoreMessage[] = [], mode = 'fallback') {
+function createChatResponse(message: string, mode = 'fallback') {
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
     start(controller) {
-      controller.enqueue(encoder.encode(formatStreamPart('text', createFallbackMessage(messages))));
+      controller.enqueue(encoder.encode(formatStreamPart('text', message)));
       controller.close();
     },
   });
@@ -73,24 +73,31 @@ function createFallbackResponse(messages: CoreMessage[] = [], mode = 'fallback')
   });
 }
 
+function createFallbackResponse(messages: CoreMessage[] = [], mode = 'fallback') {
+  return createChatResponse(createFallbackMessage(messages), mode);
+}
+
 export async function POST(req: Request) {
+  let messages: CoreMessage[] = [];
+
   try {
-    const { messages = [] }: { messages?: CoreMessage[] } = await req.json();
+    const body: { messages?: CoreMessage[] } = await req.json();
+    messages = body.messages ?? [];
 
     if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
       console.warn("Chat API fallback active: GOOGLE_GENERATIVE_AI_API_KEY is missing.");
       return createFallbackResponse(messages, 'missing-google-key');
     }
 
-    const result = await streamText({
-      model: google('gemini-1.5-flash'),
+    const result = await generateText({
+      model: google('gemini-2.5-flash'),
       system: systemPrompt,
       messages,
     });
 
-    return result.toAIStreamResponse();
+    return createChatResponse(result.text, 'gemini');
   } catch (error) {
     console.error("Chat API Error:", error);
-    return createFallbackResponse([], 'chat-error');
+    return createFallbackResponse(messages, 'chat-error');
   }
 }

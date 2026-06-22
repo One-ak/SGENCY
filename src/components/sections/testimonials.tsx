@@ -25,7 +25,7 @@ const itemVariants = {
 
 const testimonialsData = [
   {
-    quote: "Sgency completely revolutionized our lead generation. Their automation workflows saved us 40 hours a week while doubling our conversion rate.",
+    quote: "letsgroww completely revolutionized our lead generation. Their automation workflows saved us 40 hours a week while doubling our conversion rate.",
     author: "Aanya Sharma",
     role: "CEO, TechFlow",
   },

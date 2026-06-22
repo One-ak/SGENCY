@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
 import { Heading } from "@/components/ui/heading"
 import { FinalCta } from "@/components/sections/final-cta"
-import { Code2, LineChart, BrainCircuit, Rocket, CheckCircle2 } from "lucide-react"
+import { Code2, LineChart, BrainCircuit, Rocket } from "lucide-react"
 
 const values = [
   {
@@ -56,7 +56,7 @@ export default function AboutPage() {
                 Engineering <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-blue-600">Digital Dominance.</span>
               </Heading>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium">
-                We are SGENCY — a premium web design and AI automation agency built to scale ambitious brands.
+                We are letsgroww — a premium web design and AI automation agency built to scale ambitious brands.
               </p>
             </motion.div>
           </div>
@@ -70,16 +70,16 @@ export default function AboutPage() {
               transition={{ duration: 0.5 }}
               className="lg:col-span-7 space-y-8"
             >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-tight">The Founder's Vision</h2>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold tracking-tight">The Founder&apos;s Vision</h2>
               <div className="prose prose-lg dark:prose-invert text-muted-foreground">
                 <p className="leading-relaxed">
-                  Hi, I'm <strong className="text-foreground">Ansh Pratap Singh</strong>, the founder of SGENCY.
+                  Hi, I&apos;m <strong className="text-foreground">Ansh Pratap Singh</strong>, the founder of letsgroww.
                 </p>
                 <p className="leading-relaxed">
                   With a background in Data Science, Artificial Intelligence, and advanced web architecture, I realized that most businesses suffer from a massive disconnect: they have great products, but their digital presence is built on outdated, slow, and unscalable technology.
                 </p>
                 <p className="leading-relaxed">
-                  I built SGENCY to bridge the gap between complex data science models and clean, user-friendly web interfaces. We don't just hand you a generic template; we build custom, high-performance digital ecosystems designed to capture leads, automate your workflows, and genuinely scale your revenue.
+                  I built letsgroww to bridge the gap between complex data science models and clean, user-friendly web interfaces. We don&apos;t just hand you a generic template; we build custom, high-performance digital ecosystems designed to capture leads, automate your workflows, and genuinely scale your revenue.
                 </p>
               </div>
               

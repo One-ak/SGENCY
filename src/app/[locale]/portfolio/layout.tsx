@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Our Portfolio | Case Studies & Results",
-  description: "Explore our latest projects and case studies. See how SGENCY drives revenue and builds stunning digital experiences for clients worldwide.",
+  description: "Explore our latest projects and case studies. See how letsgroww drives revenue and builds stunning digital experiences for clients worldwide.",
 };
 
 export default function PortfolioLayout({

@@ -9,7 +9,6 @@ import { Section } from "@/components/ui/section"
 import { Heading } from "@/components/ui/heading"
 import { servicesData } from "@/data/services"
 import { FinalCta } from "@/components/sections/final-cta"
-import { cn } from "@/lib/utils"
 
 export default function ServicesPage() {
   return (

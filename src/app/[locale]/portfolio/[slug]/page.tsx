@@ -164,9 +164,9 @@ export default async function PortfolioSubpage({ params }: PageProps) {
                 
                 <Heading level={3} className="text-xl mb-4">Ready to start yours?</Heading>
                 <p className="text-muted-foreground mb-6">
-                  Let's discuss how we can achieve similar results for your business.
+                  Let&apos;s discuss how we can achieve similar results for your business.
                 </p>
-                <Link href="/contact" className="block">
+                <Link href="/contact?intent=portfolio-case-study" className="block">
                   <CtaButton className="w-full">Book a Strategy Call</CtaButton>
                 </Link>
               </div>

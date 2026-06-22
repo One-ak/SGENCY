@@ -7,15 +7,15 @@
     "bookCall": "परामर्श बुक करें"
   },
   "Metadata": {
-    "title": "SGENCY | प्रीमियम वेब डिज़ाइन और एआई ऑटोमेशन एजेंसी",
-    "description": "SGENCY कस्टम सॉफ्टवेयर विकास, एआई ऑटोमेशन सेवाओं और उच्च-रूपांतरण वेब डिज़ाइन में विशेषज्ञता वाली एक वैश्विक प्रीमियम डिजिटल एजेंसी है।",
+    "title": "letsgroww | प्रीमियम वेब डिज़ाइन और एआई ऑटोमेशन एजेंसी",
+    "description": "letsgroww कस्टम सॉफ्टवेयर विकास, एआई ऑटोमेशन सेवाओं और उच्च-रूपांतरण वेब डिज़ाइन में विशेषज्ञता वाली एक वैश्विक प्रीमियम डिजिटल एजेंसी है।",
     "keywords": "वेब डिज़ाइन एजेंसी, कस्टम सॉफ्टवेयर डेवलपमेंट, एआई ऑटोमेशन सर्विसेज, प्रीमियम डिजिटल एजेंसी, एसईओ ऑप्टिमाइजेशन, हाई कन्वर्जन वेबसाइट्स"
   },
   "Hero": {
     "badge": "प्रीमियम ग्लोबल डिजिटल एजेंसी",
     "build": "बनाएं। स्वचालित करें। ",
     "scale": "स्केल।",
-    "subtitle": "हम एक शीर्ष स्तरीय वेब डिज़ाइन और कस्टम सॉफ्टवेयर विकास एजेंसी हैं। हम आपके व्यवसाय के विकास को गति देने के लिए प्रीमियम डिज़ाइन, मजबूत सॉफ्टवेयर इंजीनियरिंग और एआई ऑटोमेशन के बीच की खाई को पाटते हैं।",
+    "subtitle": "आप growth bottleneck बताएं। हम उसे premium website, custom software system या AI automation workflow में बदलते हैं, जो leads capture करे, manual work घटाए और revenue scale करे।",
     "bookCall": "रणनीति कॉल बुक करें",
     "viewWork": "हमारा पोर्टफोलियो देखें"
   },
@@ -40,6 +40,68 @@
         "title": "एआई ऑटोमेशन सर्विसेज और मशीन लर्निंग",
         "description": "अत्याधुनिक आर्टिफिशियल इंटेलिजेंस के साथ संचालन को सुव्यवस्थित करें। हम कस्टम एलएलएम, स्वचालित ग्राहक सहायता एजेंटों और भविष्य कहनेवाला विश्लेषण को सीधे आपके वर्कफ़्लो में एकीकृत करते हैं।"
       }
+    }
+  },
+  "Blueprint": {
+    "badge": "रणनीति इंजन",
+    "title": "एक बिजनेस bottleneck को पूरे growth system में बदलें।",
+    "subtitle": "Modern AI-first product experiences से प्रेरित यह सेक्शन letsgroww offer को ज्यादा साफ बनाता है: आप goal बताते हैं, हम उसके around funnel, software, automation और launch plan बनाते हैं।",
+    "brief": {
+      "label": "Live project brief",
+      "title": "Request से roadmap तक",
+      "inputLabel": "Client input",
+      "input": "हमें ज्यादा qualified leads, premium website और follow-ups automate करने का तरीका चाहिए, बिना बड़ी team hire किए।"
+    },
+    "outputs": {
+      "strategy": {
+        "title": "Conversion Strategy",
+        "description": "Design शुरू होने से पहले offer positioning, landing flow, SEO intent और lead capture points map किए जाते हैं।"
+      },
+      "system": {
+        "title": "Automation System",
+        "description": "Manual work कम करने के लिए CRM routing, AI assistant logic, email follow-ups और dashboards connect किए जाते हैं।"
+      },
+      "growth": {
+        "title": "Launch & Optimization",
+        "description": "Build live होने के बाद analytics, experiments, campaign assets और weekly improvement cycles चलते हैं।"
+      }
+    },
+    "steps": {
+      "audit": {
+        "title": "Bottleneck audit",
+        "description": "हम देखते हैं कि leads, sales, operations या customer support में revenue कहाँ leak हो रहा है।"
+      },
+      "prototype": {
+        "title": "System prototype",
+        "description": "Full build से पहले आपको page flow, automation journey और key screens दिखते हैं।"
+      },
+      "launch": {
+        "title": "Data के साथ launch",
+        "description": "हम site या software को analytics, conversion tracking और practical next-step plan के साथ ship करते हैं।"
+      }
+    },
+    "stats": {
+      "days": {
+        "value": "7-14",
+        "label": "days to first preview"
+      },
+      "hours": {
+        "value": "100+",
+        "label": "manual hours targeted"
+      },
+      "stack": {
+        "value": "1",
+        "label": "connected growth stack"
+      }
+    },
+    "cta": {
+      "primary": "मेरा roadmap बनाएं",
+      "note": "Generic template pitch नहीं"
+    },
+    "proof": {
+      "first": "हर project सिर्फ design inspiration नहीं, business outcomes से शुरू होता है।",
+      "second": "AI automation real operations के around plan होती है, novelty demo के around नहीं।",
+      "third": "Launch में analytics शामिल होती है ताकि delivery day के बाद improvement बंद न हो।"
     }
   },
   "Portfolio": {

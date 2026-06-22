@@ -5,23 +5,20 @@ import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { theme, resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
-  const [isVisualDark, setIsVisualDark] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true)
-    const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    setIsVisualDark(isDark);
-  }, [theme])
+    const timer = window.setTimeout(() => setMounted(true), 0)
+    return () => window.clearTimeout(timer)
+  }, [])
 
   if (!mounted) return null
 
+  const isVisualDark = theme === "dark" || (theme === "system" && resolvedTheme === "dark")
+
   const toggleTheme = () => {
-    const nextTheme = isVisualDark ? "light" : "dark";
-    setIsVisualDark(!isVisualDark);
-    // Framer Motion or Next Themes handles CSS transitions smoothly enough
-    setTheme(nextTheme);
+    setTheme(isVisualDark ? "light" : "dark");
   }
 
   return (

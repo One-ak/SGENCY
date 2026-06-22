@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils"
 const plans = [
   {
     name: "Launch",
+    contactIntent: "package-launch",
     price: "₹34,999",
     period: "/month",
     bestFor: ["Businesses looking to establish a digital presence"],
@@ -31,6 +32,7 @@ const plans = [
   },
   {
     name: "Growth",
+    contactIntent: "package-growth",
     price: "₹79,999",
     period: "/month",
     bestFor: ["Businesses looking to generate leads and build a stronger brand."],
@@ -50,6 +52,7 @@ const plans = [
   },
   {
     name: "Scale",
+    contactIntent: "package-scale",
     price: "₹1,49,999",
     period: "/month",
     bestFor: ["Established businesses seeking consistent growth."],
@@ -70,6 +73,7 @@ const plans = [
   },
   {
     name: "AI Transformation",
+    contactIntent: "package-ai-transformation",
     price: "₹2,99,999",
     period: "/month",
     bestFor: ["Businesses wanting to automate operations and customer interactions."],
@@ -89,6 +93,7 @@ const plans = [
   },
   {
     name: "Enterprise",
+    contactIntent: "package-enterprise",
     price: "Starts at ₹5,99,999",
     period: "/month",
     bestFor: ["Large businesses and manufacturing companies."],
@@ -241,7 +246,7 @@ export default function PackagesPage() {
               </div>
               
               <Link 
-                href="/contact"
+                href={`/contact?intent=${plan.contactIntent}`}
                 className={cn(buttonVariants({ variant: plan.highlight ? "default" : "outline", size: "lg" }), "w-full rounded-xl mt-auto shadow-sm")}
               >
                 Get Started

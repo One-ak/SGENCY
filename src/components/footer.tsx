@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { Container } from "@/components/ui/container"
+import { BrandLogo } from "@/components/brand-logo"
 
 const footerLinks = {
   services: [
@@ -16,7 +17,7 @@ const footerLinks = {
     { name: "Portfolio", href: "/portfolio" },
     { name: "Packages", href: "/packages" },
     { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/contact?intent=general" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
@@ -49,12 +50,12 @@ export function Footer() {
               Subscribe
             </button>
           </form>
-        </div>
+          </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 lg:col-span-1">
-            <Link href="/" className="font-heading text-2xl font-bold tracking-tight inline-block mb-4">
-              SGENCY<span className="text-primary">.</span>
+            <Link href="/" aria-label="letsgroww home" className="mb-4 inline-block">
+              <BrandLogo markClassName="size-8" />
             </Link>
             <p className="text-muted-foreground text-sm max-w-xs mb-6">
               Build. Automate. Scale. Websites, Software, Marketing & AI Automation under one strategic partner.
@@ -92,7 +93,7 @@ export function Footer() {
             <p className="text-sm text-muted-foreground mb-4">
               Book a consultation to discuss your transformation.
             </p>
-            <Link href="/contact" className="text-sm font-medium text-primary hover:underline underline-offset-4">
+            <Link href="/contact?intent=start-project" className="text-sm font-medium text-primary hover:underline underline-offset-4">
               Start a project &rarr;
             </Link>
           </div>
@@ -100,7 +101,7 @@ export function Footer() {
         
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Sgency. All rights reserved.
+            &copy; {new Date().getFullYear()} letsgroww. All rights reserved.
           </p>
           <div className="flex gap-6">
             {footerLinks.legal.map((link) => (

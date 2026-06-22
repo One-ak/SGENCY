@@ -170,7 +170,7 @@ export function RoiCalculator() {
             
             <div>
               <p className="text-sm font-semibold text-green-500 uppercase tracking-wider mb-2 flex items-center justify-center gap-2">
-                <TrendingUp className="w-4 h-4" /> Capital Unlocked with SGENCY AI
+                <TrendingUp className="w-4 h-4" /> Capital Unlocked with letsgroww AI
               </p>
               <motion.p 
                 key={annualSavings}

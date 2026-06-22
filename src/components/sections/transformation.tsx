@@ -26,7 +26,7 @@ export function BusinessTransformation() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-4 inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-sm font-medium text-accent">
-              The Sgency Advantage
+              The letsgroww Advantage
             </div>
             <Heading level={2} className="mb-4 md:mb-6 text-3xl md:text-5xl">
               Transform your business from the inside out.

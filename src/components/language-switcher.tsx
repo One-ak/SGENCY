@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 
@@ -10,14 +9,12 @@ export function LanguageSwitcher() {
   const pathname = usePathname();
 
   const isEn = locale === "en";
-  const [isVisualEn, setIsVisualEn] = React.useState(isEn);
 
   const toggleLocale = () => {
-    setIsVisualEn(!isVisualEn);
     const nextLocale = locale === "en" ? "hi" : "en";
     const segments = pathname.split("/");
     segments[1] = nextLocale;
-    window.location.href = segments.join("/") || `/${nextLocale}`;
+    router.push(segments.join("/") || `/${nextLocale}`);
   };
 
   return (
@@ -36,7 +33,7 @@ export function LanguageSwitcher() {
       {/* Physical Toggle Thumb */}
       <div 
         className={`absolute top-1 bottom-1 w-5 rounded-full bg-gradient-to-b from-white to-gray-200 dark:from-zinc-300 dark:to-zinc-500 shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_2px_2px_rgba(255,255,255,0.9)] border border-gray-300 dark:border-zinc-600 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-20 ${
-          isVisualEn ? "translate-x-0" : "translate-x-7"
+          isEn ? "translate-x-0" : "translate-x-7"
         }`}
       >
         {/* Thumb Grip Ridges */}

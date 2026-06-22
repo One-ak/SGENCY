@@ -4,7 +4,7 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Calendar, Clock } from "lucide-react"
+import { Calendar, Clock } from "lucide-react"
 import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
 import { Heading } from "@/components/ui/heading"
@@ -30,7 +30,7 @@ export default function BlogPage() {
                 Insights & Resources
               </div>
               <Heading level={1} className="mb-6 text-5xl md:text-7xl font-bold tracking-tighter drop-shadow-sm">
-                The SGENCY <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-blue-600">Blog.</span>
+                The letsgroww <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-blue-600">Blog.</span>
               </Heading>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium">
                 Strategies, technical deep-dives, and agency news to help you scale your digital presence.

@@ -5,6 +5,7 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { BrandLogo } from "@/components/brand-logo"
 
 const navLinks = [
   { name: "Services", href: "/services" },
@@ -47,8 +48,8 @@ export function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
             className="fixed inset-0 z-50 flex flex-col bg-background p-6"
           >
             <div className="flex items-center justify-between mb-8">
-              <Link href="/" className="font-heading text-2xl font-bold" onClick={() => setIsOpen(false)}>
-                SGENCY<span className="text-primary">.</span>
+              <Link href="/" aria-label="letsgroww home" onClick={() => setIsOpen(false)}>
+                <BrandLogo markClassName="size-9" />
               </Link>
               <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
                 <X className="h-6 w-6" />
@@ -70,7 +71,7 @@ export function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
             </nav>
             
             <div className="mt-auto">
-              <Link href="/contact" onClick={() => setIsOpen(false)}>
+              <Link href="/contact?intent=strategy-call" onClick={() => setIsOpen(false)}>
                 <Button className="w-full rounded-full py-6 text-lg">
                   Book Consultation
                 </Button>

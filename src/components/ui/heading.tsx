@@ -33,9 +33,20 @@ export function Heading({
     6: "text-base sm:text-lg",
   }
 
+  const explicitSizeStyles: Record<string, string> = {
+    "5xl": "text-5xl md:text-6xl",
+    "4xl": "text-4xl md:text-5xl",
+    "3xl": "text-3xl md:text-4xl",
+    "2xl": "text-2xl md:text-3xl",
+    xl: "text-xl md:text-2xl",
+    lg: "text-lg md:text-xl",
+  }
+
+  const resolvedSize = size ? explicitSizeStyles[size] ?? size : sizeStyles[level]
+
   return (
     <MotionTag
-      className={cn(baseStyles, sizeStyles[level], className)}
+      className={cn(baseStyles, resolvedSize, className)}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}

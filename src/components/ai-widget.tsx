@@ -4,8 +4,9 @@ import React, { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Sparkles, Send, Mail, CheckCircle2 } from "lucide-react"
 import { useChat } from "ai/react"
+import ReactMarkdown from "react-markdown"
 
-const SgencyBotIcon = ({ className = "w-6 h-6", isLarge = false }: { className?: string, isLarge?: boolean }) => (
+const LetsgrowwBotIcon = ({ className = "w-6 h-6", isLarge = false }: { className?: string, isLarge?: boolean }) => (
   <div className={`relative flex items-center justify-center bg-gradient-to-tr from-primary to-blue-600 shadow-sm ${className} ${isLarge ? 'rounded-2xl rounded-br-md' : 'rounded-[10px] rounded-br-[3px]'}`}>
     <div className={`flex ${isLarge ? 'gap-[6px]' : 'gap-[3px]'}`}>
       <motion.div 
@@ -34,7 +35,7 @@ export function AiWidget() {
 
   const { messages, input, handleInputChange, handleSubmit, isLoading, append, setMessages } = useChat({
     initialMessages: [
-      { id: "1", role: "assistant", content: "Hi there! I'm SGENCY's AI assistant. How can we help you scale your business today?" }
+      { id: "1", role: "assistant", content: "Hi there! I'm letsgroww's AI assistant. How can we help you scale your business today?" }
     ],
     onError: (err) => {
       console.error(err);
@@ -43,7 +44,7 @@ export function AiWidget() {
         setMessages([
           ...messages,
           ...(failedUserMessage ? [{ id: "user-" + Date.now(), role: "user" as const, content: failedUserMessage }] : []),
-          { id: "error-" + Date.now(), role: "assistant", content: "I'm having trouble connecting to the AI service right now, but the SGENCY team can still help. Please try again in a moment or book a consultation." }
+          { id: "error-" + Date.now(), role: "assistant", content: "I'm having trouble connecting to the AI service right now, but the letsgroww team can still help. Please try again in a moment or book a consultation." }
         ]);
       }, 50);
     }
@@ -68,17 +69,22 @@ export function AiWidget() {
     const formattedChat = messages.map(m => `${m.role === 'user' ? 'User' : 'AI'}: ${m.content}`).join('\n\n');
     
     try {
-      await fetch("https://formsubmit.co/ajax/anshpratapsingh333@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/anshpratapsingh333@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          _subject: "New SGENCY AI Chat Transcript",
+          _subject: "New letsgroww AI Chat Transcript",
           message: formattedChat,
         }),
       });
+
+      if (!response.ok) {
+        throw new Error(`Transcript service returned ${response.status}`);
+      }
+
       setTranscriptSent(true);
       setTimeout(() => setTranscriptSent(false), 4000);
     } catch (error) {
@@ -107,8 +113,8 @@ export function AiWidget() {
             {/* Header */}
             <div className="bg-primary p-4 flex items-center justify-between text-primary-foreground shadow-sm">
               <div className="flex items-center gap-2">
-                <SgencyBotIcon className="w-6 h-6" isLarge={false} />
-                <span className="font-heading font-medium">SGENCY Agent</span>
+                <LetsgrowwBotIcon className="w-6 h-6" isLarge={false} />
+                <span className="font-heading font-medium">letsgroww Agent</span>
               </div>
               <div className="flex items-center gap-1">
                 {messages.length > 1 && (
@@ -139,13 +145,27 @@ export function AiWidget() {
                     key={msg.id}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed ${
+                    className={`max-w-[85%] break-words p-3 rounded-2xl text-sm leading-relaxed ${
                       msg.role === "user" 
                         ? "bg-primary text-primary-foreground self-end rounded-br-sm" 
                         : "bg-muted/80 text-foreground self-start rounded-bl-sm border border-border/50"
                     }`}
                   >
-                    {msg.content}
+                    {msg.role === "assistant" ? (
+                      <ReactMarkdown
+                        components={{
+                          p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                          strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
+                          ul: ({ children }) => <ul className="my-2 list-disc space-y-1 pl-4">{children}</ul>,
+                          ol: ({ children }) => <ol className="my-2 list-decimal space-y-1 pl-4">{children}</ol>,
+                          li: ({ children }) => <li className="pl-1">{children}</li>,
+                        }}
+                      >
+                        {msg.content}
+                      </ReactMarkdown>
+                    ) : (
+                      msg.content
+                    )}
                   </motion.div>
                 ))}
               </AnimatePresence>
@@ -186,6 +206,7 @@ export function AiWidget() {
                   aria-label="Type your message"
                   value={input}
                   onChange={handleInputChange}
+                  maxLength={1000}
                   placeholder="Type a message..." 
                   className="flex-1 bg-transparent px-3 py-2 text-sm outline-none text-foreground placeholder:text-muted-foreground"
                 />

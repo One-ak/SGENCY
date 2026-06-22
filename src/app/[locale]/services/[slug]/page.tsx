@@ -29,6 +29,8 @@ export default async function ServiceSubpage({ params }: PageProps) {
   }
 
   const Icon = service.icon
+  const serviceDiscussHref = `/contact?intent=service-discuss&service=${service.slug}`
+  const serviceQuoteHref = `/contact?intent=service-quote&service=${service.slug}`
 
   return (
     <>
@@ -45,7 +47,7 @@ export default async function ServiceSubpage({ params }: PageProps) {
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
               {service.description}
             </p>
-            <Link href="/contact">
+            <Link href={serviceDiscussHref}>
               <CtaButton size="lg">
                 Discuss Your Project
               </CtaButton>
@@ -109,7 +111,7 @@ export default async function ServiceSubpage({ params }: PageProps) {
                     <p className="text-sm text-muted-foreground mb-8">
                       Pricing varies based on scope and complexity.
                     </p>
-                    <Link href="/contact" className="w-full">
+                    <Link href={serviceQuoteHref} className="w-full">
                       <CtaButton className="w-full">Get a Quote</CtaButton>
                     </Link>
                   </CardContent>

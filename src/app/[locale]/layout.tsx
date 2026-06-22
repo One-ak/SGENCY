@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { siteUrl } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -25,17 +26,28 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return {
+    metadataBase: new URL(siteUrl),
     title: {
-      template: '%s | SGENCY',
+      template: '%s | letsgroww',
       default: t('title'),
     },
     description: t('description'),
     keywords: t('keywords').split(','),
+    icons: {
+      icon: [
+        { url: '/icon.svg?v=3', type: 'image/svg+xml' },
+        { url: '/favicon.ico?v=3', sizes: 'any' },
+      ],
+      shortcut: ['/favicon.ico?v=3'],
+      apple: [
+        { url: '/apple-icon.png?v=3', sizes: '180x180', type: 'image/png' },
+      ],
+    },
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: 'https://sgency.com',
-      siteName: 'SGENCY Premium Digital Agency',
+      url: `${siteUrl}/${locale}`,
+      siteName: 'letsgroww Premium Digital Agency',
       images: [
         {
           url: '/images/og-image.jpg',
@@ -53,10 +65,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       images: ['/images/og-image.jpg'],
     },
     alternates: {
-      canonical: `https://sgency.com/${locale}`,
+      canonical: `${siteUrl}/${locale}`,
       languages: {
-        'en': 'https://sgency.com/en',
-        'hi': 'https://sgency.com/hi',
+        'en': `${siteUrl}/en`,
+        'hi': `${siteUrl}/hi`,
       },
     },
   };

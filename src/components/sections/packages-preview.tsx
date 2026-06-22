@@ -27,6 +27,7 @@ const itemVariants = {
 const plans = [
   {
     name: "Launch",
+    contactIntent: "package-launch",
     price: "₹14,999",
     description: "Perfect for new businesses, local shops, and startups.",
     features: [
@@ -38,6 +39,7 @@ const plans = [
   },
   {
     name: "Growth",
+    contactIntent: "package-growth",
     price: "₹34,999",
     description: "Best for businesses generating revenue, clinics, and real estate.",
     features: [
@@ -51,6 +53,7 @@ const plans = [
   },
   {
     name: "Scale",
+    contactIntent: "package-scale",
     price: "₹74,999",
     description: "Designed for growing companies, manufacturing, and ecommerce.",
     features: [
@@ -126,7 +129,7 @@ export function PackagesPreview() {
                   ))}
                 </ul>
                 
-                <Link href="/contact" className="w-full">
+                <Link href={`/contact?intent=${plan.contactIntent}`} className="w-full">
                   <Button 
                     className={`w-full py-4 md:py-6 rounded-xl font-bold text-base md:text-lg ${
                       plan.popular 

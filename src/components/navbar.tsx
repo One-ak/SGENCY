@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { MobileMenu } from "@/components/mobile-menu"
+import { BrandLogo } from "@/components/brand-logo"
 import { buttonVariants } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
 import { cn } from "@/lib/utils"
@@ -40,8 +41,8 @@ export function Navbar() {
       <Container>
         <div className="flex h-16 md:h-20 items-center justify-between">
           <div className="flex items-center gap-4 md:gap-8">
-            <Link href="/" className="font-heading text-2xl font-bold tracking-tight">
-              SGENCY<span className="text-primary">.</span>
+            <Link href="/" aria-label="letsgroww home">
+              <BrandLogo markClassName="size-8" />
             </Link>
             
             <nav className="hidden md:flex items-center gap-6">
@@ -80,7 +81,7 @@ export function Navbar() {
                 Client Login
               </Link>
               <Link 
-                href="/contact"
+                href="/contact?intent=strategy-call"
                 className={cn(buttonVariants({ size: "sm" }), "px-5 py-4 rounded-full font-medium transition-transform hover:scale-105")}
               >
                 {t("bookCall")}

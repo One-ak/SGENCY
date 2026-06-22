@@ -42,7 +42,7 @@ AI models are now capable of forecasting demand with astonishing accuracy. By an
 
 You don't need a massive enterprise budget to start leveraging AI. Begin with a single pain point—like customer support ticket volume—and implement a targeted AI solution. Once you see the ROI, you can scale to more complex automations.
 
-At SGENCY, we specialize in building these custom AI architectures for growing brands.
+At letsgroww, we specialize in building these custom AI architectures for growing brands.
     `,
     date: "June 15, 2026",
     readTime: "5 min read",
@@ -182,7 +182,7 @@ This kills your page speed. And as we've talked about before, slow pages kill yo
 
 ## The Bespoke Advantage
 
-When we build a custom web application at SGENCY, we usually use Next.js and React. We write the code from scratch.
+When we build a custom web application at letsgroww, we usually use Next.js and React. We write the code from scratch.
 
 Why does this matter?
 1. **Speed**: We only ship the exact code needed to run your specific features. This results in near-instant load times.

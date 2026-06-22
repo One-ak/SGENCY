@@ -2,25 +2,12 @@
 
 import * as React from "react"
 import { motion } from "framer-motion"
+import Link from "next/link"
 import { Container } from "@/components/ui/container"
 import { Heading } from "@/components/ui/heading"
-import { Lock, Mail, ArrowRight, ShieldCheck } from "lucide-react"
+import { Mail, ArrowRight, ShieldCheck } from "lucide-react"
 
 export default function PortalPage() {
-  const [email, setEmail] = React.useState("")
-  const [password, setPassword] = React.useState("")
-  const [isLoading, setIsLoading] = React.useState(false)
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    // Simulate login delay
-    setTimeout(() => {
-      setIsLoading(false)
-      alert("This is a demo! In a real scenario, this would authenticate you into the client dashboard.")
-    }, 1500)
-  }
-
   return (
     <div className="pt-32 pb-20 min-h-screen relative flex items-center justify-center">
       {/* Background Orbs */}
@@ -42,10 +29,10 @@ export default function PortalPage() {
               <ShieldCheck className="w-4 h-4" /> Secure Client Portal
             </div>
             <Heading as="h1" size="5xl" className="mb-6 font-heading tracking-tight">
-              Welcome back.
+              Client access is private.
             </Heading>
             <p className="text-xl text-muted-foreground mb-8">
-              Log in to view your project milestones, approve designs, and track your automation ROI in real-time.
+              We are preparing a secure portal for active projects. For now, clients receive project updates, approvals, and invoices through a private onboarding link.
             </p>
             <ul className="space-y-4 text-left hidden lg:block">
               {[
@@ -72,55 +59,27 @@ export default function PortalPage() {
             <div className="bg-background/60 backdrop-blur-xl border border-border rounded-3xl p-8 shadow-2xl relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
               
-              <form onSubmit={handleLogin} className="relative z-10 space-y-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Work Email</label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <input 
-                      type="email" 
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="hello@yourcompany.com" 
-                      className="w-full bg-muted/50 border border-border rounded-xl pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    />
+              <div className="relative z-10 space-y-6">
+                <div className="rounded-2xl border border-border bg-muted/40 p-5">
+                  <div className="flex items-center gap-3 text-foreground font-medium">
+                    <Mail className="w-5 h-5 text-primary" />
+                    Need your portal link?
                   </div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    Contact the letsgroww team with your project email and we will send the correct secure access link.
+                  </p>
                 </div>
 
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <label className="text-sm font-medium">Password</label>
-                    <a href="#" className="text-xs text-primary hover:underline">Forgot?</a>
-                  </div>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                    <input 
-                      type="password" 
-                      required
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="••••••••" 
-                      className="w-full bg-muted/50 border border-border rounded-xl pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    />
-                  </div>
-                </div>
-
-                <button 
-                  type="submit" 
-                  disabled={isLoading}
-                  className="w-full bg-foreground text-background font-medium rounded-xl py-3 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50"
+                <Link
+                  href="/contact?intent=client-access"
+                  className="w-full bg-foreground text-background font-medium rounded-xl py-3 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
                 >
-                  {isLoading ? (
-                    <span className="w-5 h-5 border-2 border-background border-t-transparent rounded-full animate-spin" />
-                  ) : (
-                    <>Sign In <ArrowRight className="w-4 h-4" /></>
-                  )}
-                </button>
-              </form>
+                  Request Access <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
 
               <div className="mt-8 text-center text-sm text-muted-foreground">
-                Don't have an account? <a href="/contact" className="text-primary hover:underline">Partner with us</a>
+                Starting a new project? <Link href="/contact?intent=partner" className="text-primary hover:underline">Partner with us</Link>
               </div>
             </div>
           </motion.div>

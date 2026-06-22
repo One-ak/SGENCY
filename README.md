@@ -16,7 +16,7 @@ bun dev
 
 ## Chatbot Setup
 
-The SGENCY chat widget uses Google Gemini through the Vercel AI SDK. Add this server-side environment variable before running or deploying the app:
+The letsgroww chat widget uses Google Gemini through the Vercel AI SDK. Add this server-side environment variable before running or deploying the app:
 
 ```bash
 GOOGLE_GENERATIVE_AI_API_KEY=your_google_generative_ai_key_here
@@ -24,7 +24,7 @@ GOOGLE_GENERATIVE_AI_API_KEY=your_google_generative_ai_key_here
 
 For local development, copy `.env.example` to `.env.local` and replace the placeholder with your real key. In production, add the same variable to your hosting provider's environment variables and redeploy.
 
-If the key is missing, the widget now falls back to a limited SGENCY help mode instead of showing visitors a technical error.
+If the key is missing, the widget now falls back to a limited letsgroww help mode instead of showing visitors a technical error.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

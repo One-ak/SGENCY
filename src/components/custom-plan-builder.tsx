@@ -105,6 +105,8 @@ export function CustomPlanBuilder() {
   const [name, setName] = React.useState("")
   const [email, setEmail] = React.useState("")
   const [phone, setPhone] = React.useState("")
+  const [isSubmitting, setIsSubmitting] = React.useState(false)
+  const [submitError, setSubmitError] = React.useState("")
 
   const handleToggle = (id: string) => {
     setSelectedItems(prev => 
@@ -132,6 +134,8 @@ export function CustomPlanBuilder() {
 
   const handleSubmitRequest = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitError("")
     
     // Create text summary of selected packages
     const selectedLabels = builderCategories
@@ -141,7 +145,7 @@ export function CustomPlanBuilder() {
       .join(", ")
 
     try {
-      await fetch("https://formsubmit.co/ajax/anshpratapsingh333@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/anshpratapsingh333@gmail.com", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
@@ -156,12 +160,17 @@ export function CustomPlanBuilder() {
           _subject: `New Custom Package Quote Request from ${name}`
         })
       })
+
+      if (!response.ok) {
+        throw new Error(`Quote form service returned ${response.status}`)
+      }
       
       setStep("success")
     } catch (error) {
-      console.error(error)
-      // Fallback to success UI even if there's a network error for better UX
-      setStep("success")
+      console.error("Custom quote submission failed:", error)
+      setSubmitError("We could not send the request right now. Please try again or contact us directly.")
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -310,33 +319,43 @@ export function CustomPlanBuilder() {
               <div className="space-y-5">
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold mb-2 ml-1">Full Name</label>
-                  <input required type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} className="w-full h-14 px-5 rounded-xl border border-border bg-muted/30 focus:bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-base placeholder:text-muted-foreground/60" placeholder="e.g. John Doe" />
+                  <input required type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={80} className="w-full h-14 px-5 rounded-xl border border-border bg-muted/30 focus:bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-base placeholder:text-muted-foreground/60" placeholder="e.g. John Doe" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="email" className="block text-sm font-semibold mb-2 ml-1">Email Address</label>
-                    <input required type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full h-14 px-5 rounded-xl border border-border bg-muted/30 focus:bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-base placeholder:text-muted-foreground/60" placeholder="john@company.com" />
+                    <input required type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={160} className="w-full h-14 px-5 rounded-xl border border-border bg-muted/30 focus:bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-base placeholder:text-muted-foreground/60" placeholder="john@company.com" />
                   </div>
                   <div>
                     <label htmlFor="phone" className="block text-sm font-semibold mb-2 ml-1">Phone Number</label>
-                    <input required type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full h-14 px-5 rounded-xl border border-border bg-muted/30 focus:bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-base placeholder:text-muted-foreground/60" placeholder="+91 98765 43210" />
+                    <input required type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={30} className="w-full h-14 px-5 rounded-xl border border-border bg-muted/30 focus:bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-base placeholder:text-muted-foreground/60" placeholder="+91 98765 43210" />
                   </div>
                 </div>
               </div>
+
+              {submitError && (
+                <p role="alert" className="rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+                  {submitError}
+                </p>
+              )}
 
               <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-border">
                 <button 
                   type="button" 
                   className="w-full sm:w-1/3 rounded-xl px-6 h-14 font-semibold text-foreground bg-muted hover:bg-muted/80 transition-colors flex items-center justify-center"
-                  onClick={() => setStep("select")}
+                  onClick={() => {
+                    setSubmitError("")
+                    setStep("select")
+                  }}
                 >
                   Go Back
                 </button>
                 <button 
                   type="submit" 
-                  className="w-full sm:w-2/3 rounded-xl px-8 h-14 font-bold text-primary-foreground bg-primary shadow-[inset_0_2px_0_rgba(255,255,255,0.2),0_4px_10px_rgba(108,92,231,0.4)] hover:brightness-110 active:translate-y-1 transition-all flex items-center justify-center"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-2/3 rounded-xl px-8 h-14 font-bold text-primary-foreground bg-primary shadow-[inset_0_2px_0_rgba(255,255,255,0.2),0_4px_10px_rgba(108,92,231,0.4)] hover:brightness-110 active:translate-y-1 transition-all disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center"
                 >
-                  Submit Request <CheckSquare2 className="ml-2 w-5 h-5" />
+                  {isSubmitting ? "Sending..." : <>Submit Request <CheckSquare2 className="ml-2 w-5 h-5" /></>}
                 </button>
               </div>
             </form>

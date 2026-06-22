@@ -7,15 +7,15 @@
     "bookCall": "Book Consultation"
   },
   "Metadata": {
-    "title": "SGENCY | Premium Web Design & AI Automation Agency",
-    "description": "SGENCY is a global premium digital agency specializing in custom software development, AI automation services, and high-conversion web design.",
+    "title": "letsgroww | Premium Web Design & AI Automation Agency",
+    "description": "letsgroww is a global premium digital agency specializing in custom software development, AI automation services, and high-conversion web design.",
     "keywords": "web design agency, custom software development, AI automation services, premium digital agency, SEO optimization, high conversion websites"
   },
   "Hero": {
     "badge": "Premium Global Digital Agency",
     "build": "Build. Automate. ",
     "scale": "Scale.",
-    "subtitle": "We are a top-tier web design and custom software development agency. We bridge the gap between premium design, robust software engineering, and AI automation to accelerate your business growth.",
+    "subtitle": "Tell us the growth bottleneck. We turn it into a premium website, custom software system, or AI automation workflow built to capture leads, reduce manual work, and scale revenue.",
     "bookCall": "Book a Strategy Call",
     "viewWork": "View Our Portfolio"
   },
@@ -40,6 +40,68 @@
         "title": "AI Automation Services & Machine Learning",
         "description": "Streamline operations with cutting-edge Artificial Intelligence. We integrate custom LLMs, automated customer support agents, and predictive analytics directly into your workflow."
       }
+    }
+  },
+  "Blueprint": {
+    "badge": "Strategy Engine",
+    "title": "Turn one business bottleneck into a complete growth system.",
+    "subtitle": "Inspired by modern AI-first product experiences, this section makes the letsgroww offer clearer: you bring the goal, we map the funnel, software, automation, and launch plan around it.",
+    "brief": {
+      "label": "Live project brief",
+      "title": "From request to roadmap",
+      "inputLabel": "Client input",
+      "input": "We need more qualified leads, a premium website, and a way to automate follow-ups without hiring a bigger team."
+    },
+    "outputs": {
+      "strategy": {
+        "title": "Conversion Strategy",
+        "description": "Clear offer positioning, landing flow, SEO intent, and lead capture points mapped before design starts."
+      },
+      "system": {
+        "title": "Automation System",
+        "description": "CRM routing, AI assistant logic, email follow-ups, and dashboards connected to reduce manual work."
+      },
+      "growth": {
+        "title": "Launch & Optimization",
+        "description": "Analytics, experiments, campaign assets, and weekly improvement cycles after the build goes live."
+      }
+    },
+    "steps": {
+      "audit": {
+        "title": "Audit the bottleneck",
+        "description": "We identify where leads, sales, operations, or customer support are leaking revenue."
+      },
+      "prototype": {
+        "title": "Prototype the system",
+        "description": "You see the page flow, automation journey, and key screens before the full build begins."
+      },
+      "launch": {
+        "title": "Launch with data",
+        "description": "We ship the site or software with analytics, conversion tracking, and a practical next-step plan."
+      }
+    },
+    "stats": {
+      "days": {
+        "value": "7-14",
+        "label": "days to first preview"
+      },
+      "hours": {
+        "value": "100+",
+        "label": "manual hours targeted"
+      },
+      "stack": {
+        "value": "1",
+        "label": "connected growth stack"
+      }
+    },
+    "cta": {
+      "primary": "Build My Roadmap",
+      "note": "No generic template pitch"
+    },
+    "proof": {
+      "first": "Every project starts with business outcomes, not just design inspiration.",
+      "second": "AI automation is planned around real operations, not novelty demos.",
+      "third": "Launch includes analytics so improvement does not stop on delivery day."
     }
   },
   "Portfolio": {

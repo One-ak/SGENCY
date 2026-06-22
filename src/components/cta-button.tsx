@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { motion } from "framer-motion"
 import { Button, ButtonProps } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { ArrowRight } from "lucide-react"

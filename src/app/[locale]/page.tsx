@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/hero"
 import { ServicesPreview } from "@/components/sections/services-preview"
+import { BlueprintSection } from "@/components/sections/blueprint"
 import { BusinessTransformation } from "@/components/sections/transformation"
 import { PortfolioPreview } from "@/components/sections/portfolio-preview"
 import { PackagesPreview } from "@/components/sections/packages-preview"
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <ServicesPreview />
+      <BlueprintSection />
       <section className="py-20 bg-muted/30">
         <Container>
           <div className="mb-12 text-center">

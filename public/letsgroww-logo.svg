@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">letsgroww logo</title>
+  <desc id="desc">A rounded gradient lg monogram with an upward growth arrow.</desc>
   <defs>
     <linearGradient id="lgw-bg" x1="70" y1="56" x2="440" y2="454" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#0f172a" />
